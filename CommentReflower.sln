@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentReflower", "CommentReflower\CommentReflower.csproj", "{A6C31D38-ABB9-4A05-AA70-01CFF14190F9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CommentReflowerSetup", "CommentReflowerSetup\CommentReflowerSetup.vdproj", "{1FD861E1-A575-4613-AF41-CCBD76238C72}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentReflowerLib", "CommentReflowerLib\CommentReflowerLib.csproj", "{8A754D5F-6005-4CD5-907F-D66B131CB387}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentReflowerTest", "CommentReflowerTest\CommentReflowerTest.csproj", "{8DA7DD2D-784D-421A-922D-63B0AC3867A0}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A6C31D38-ABB9-4A05-AA70-01CFF14190F9}.Debug.ActiveCfg = Debug|.NET
+		{A6C31D38-ABB9-4A05-AA70-01CFF14190F9}.Debug.Build.0 = Debug|.NET
+		{A6C31D38-ABB9-4A05-AA70-01CFF14190F9}.Release.ActiveCfg = Release|.NET
+		{A6C31D38-ABB9-4A05-AA70-01CFF14190F9}.Release.Build.0 = Release|.NET
+		{1FD861E1-A575-4613-AF41-CCBD76238C72}.Debug.ActiveCfg = Debug
+		{1FD861E1-A575-4613-AF41-CCBD76238C72}.Debug.Build.0 = Debug
+		{1FD861E1-A575-4613-AF41-CCBD76238C72}.Release.ActiveCfg = Release
+		{1FD861E1-A575-4613-AF41-CCBD76238C72}.Release.Build.0 = Release
+		{8A754D5F-6005-4CD5-907F-D66B131CB387}.Debug.ActiveCfg = Debug|.NET
+		{8A754D5F-6005-4CD5-907F-D66B131CB387}.Debug.Build.0 = Debug|.NET
+		{8A754D5F-6005-4CD5-907F-D66B131CB387}.Release.ActiveCfg = Release|.NET
+		{8A754D5F-6005-4CD5-907F-D66B131CB387}.Release.Build.0 = Release|.NET
+		{8DA7DD2D-784D-421A-922D-63B0AC3867A0}.Debug.ActiveCfg = Debug|.NET
+		{8DA7DD2D-784D-421A-922D-63B0AC3867A0}.Debug.Build.0 = Debug|.NET
+		{8DA7DD2D-784D-421A-922D-63B0AC3867A0}.Release.ActiveCfg = Release|.NET
+		{8DA7DD2D-784D-421A-922D-63B0AC3867A0}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
