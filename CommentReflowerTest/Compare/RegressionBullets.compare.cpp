@@ -34,3 +34,16 @@
 
 ///		Doxygen style with tabs.
 ///		1) test - hello there
+
+/*!
+ * Doxygen comment allows blank comments to be skipped on first line and for the
+ * block still to be recognised and processed.
+ */
+
+/*! Also allows for stuff on first line, which should be wrapped correctly, as
+ *  long as the indents match.
+ */
+
+/*
+ * Same with C-style comment
+ */

@@ -60,9 +60,9 @@ namespace CommentReflowerLib
                 " * ",
                 false));
             mCommentBlocks.Add(new CommentBlock(
-                "Doxygen C style 2 (/*!)",
+                "Doxygen C style 2 (/*!), which may have text on first line",
                 (ArrayList)cPlusPlusCba.Clone(),
-                StartEndBlockType.OnOwnLineIfBlockIsMoreThanOne,
+                StartEndBlockType.NeverOnOwnLine,
                 "/*! ",
                 false,
                 StartEndBlockType.OnOwnLineIfBlockIsMoreThanOne,

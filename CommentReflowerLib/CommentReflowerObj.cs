@@ -458,11 +458,26 @@ namespace CommentReflowerLib
                 {
                     currentIndent = SkipWhitespace(curPoint);
                 }
+                if ((block.mBlockStartType == StartEndBlockType.NeverOnOwnLine) &&
+                    (curPoint.Line == bdata.mStartLine) )
+                {
+                    // Need to account that on the first line the block start
+                    // may have a different length to the line start.
+                    //
+                    // Note the reason we do not do the multi/ single option here
+                    // is that if we are pulling up text onto the first line we 
+                    // actually break the reflowing indentation rule. This all
+                    // needs to be thought through a bit better.
+                    currentIndent += bdata.mMatchedBlockStart.Length - block.mLineStart.Length;
+                }
+
                 int blockWrapWidth = pset.mWrapWidth;
                 if ((bdata.mIndentation + block.mLineStart.Length + currentIndent + pset.mMinimumBlockWidth) > blockWrapWidth)
                 {
                     blockWrapWidth = bdata.mIndentation + block.mLineStart.Length + currentIndent + pset.mMinimumBlockWidth;
                 }
+
+
 
                 // Now see if we can wrap into the next line, or if we wrap by
                 // inserting a new line before it.

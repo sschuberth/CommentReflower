@@ -307,7 +307,7 @@ namespace CommentReflowerLib
             // if the block start can be on the same line as comment text, then
             // it may have trailing spaces that don't happen when it is on a
             // line by itself. so trim those spaces and scan again
-            if (mBlockStartType == StartEndBlockType.OnOwnLineIfBlockIsMoreThanOne)
+            if (mBlockStartType != StartEndBlockType.AlwaysOnOwnLine)
             {
                 startString = @"^" + stCh + @"{" + indent.ToString() + @"}(" + 
                               getRegEx(mBlockStart.TrimEnd(), mIsBlockStartRegEx) + 

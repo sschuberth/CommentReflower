@@ -312,7 +312,6 @@ namespace CommentReflowerTest
                 DoSimpleSingleFileTest("VB","Regression",".vb");
                 DoSimpleSingleFileTest("Jamfile","Regression",".JAM");
                 DoSimpleSingleFileTest("Text file","Regression",".txt");
-
                 DoXmlFileTests();
             }
             catch (Exception e)

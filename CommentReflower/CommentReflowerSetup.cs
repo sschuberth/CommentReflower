@@ -1606,7 +1606,7 @@ namespace CommentReflower
 
         private void AboutBtn_Click(object sender, System.EventArgs e)
         {
-            MessageBox.Show(this, "Comment Reflower 1.0\nCopyright (C) 2004 Ian Nowland");
+            MessageBox.Show(this, "Comment Reflower 1.1\nCopyright (C) 2004 Ian Nowland");
         }
 
         private void CommentReflowerSetup_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)

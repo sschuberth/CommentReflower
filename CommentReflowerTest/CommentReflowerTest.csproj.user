@@ -15,7 +15,7 @@
                     StartPage = ""
                     StartProgram = ""
                     StartURL = ""
-                    StartWorkingDirectory = "C:\Documents and Settings\Ian\My Documents\Visual Studio Projects\CommentReflower\CommentReflowerTest"
+                    StartWorkingDirectory = "C:\Documents and Settings\Ian\My Documents\CommentReflowerCvs\CommentReflower\CommentReflowerTest"
                     StartWithIE = "true"
                 />
                 <Config

@@ -155,34 +155,6 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "Input\Regression.cpp"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Input\Regression.JAM"
-                    BuildAction = "None"
-                />
-                <File
-                    RelPath = "Input\Regression.txt"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Input\Regression.vb"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Input\RegressionBlankLines.cpp"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Input\RegressionBreakFlowStrings.cpp"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Input\RegressionBullets.cpp"
-                    BuildAction = "Content"
-                />
-                <File
                     RelPath = "Output\Regression.iout2.cpp"
                     BuildAction = "Content"
                 />
@@ -232,10 +204,6 @@
                 />
                 <File
                     RelPath = "Output\RegressionBlankLines.out2.cpp"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Output\RegressionBreakFlowStrings.iout.cpp"
                     BuildAction = "Content"
                 />
                 <File
