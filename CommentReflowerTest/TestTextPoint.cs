@@ -340,9 +340,18 @@ namespace CommentReflowerTest
         }
         public string GetText(object obj)
         {
+            // FIXME: this function is not implemented to handle multiple lines!!!!
+
             if (obj is int)
             {
                 int val = (int) obj;
+
+                if ((val == -1) && (mCharPosition == 0))
+                {
+                    // ugly hack!
+                    return "\r\n";
+                }
+
                 return mParent.GetLine(mLineNum).Substring(mCharPosition,val);
 
             } 

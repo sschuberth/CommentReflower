@@ -162,7 +162,6 @@ namespace CommentReflower
             {
                 updateItemsForBreakFlowString(-1);
             }
-
         }
 
         /// <summary>
@@ -702,7 +701,7 @@ namespace CommentReflower
                                                                      "can contain text before start"});
             this.FirstLineBlockCombo.Location = new System.Drawing.Point(112, 320);
             this.FirstLineBlockCombo.Name = "FirstLineBlockCombo";
-            this.FirstLineBlockCombo.Size = new System.Drawing.Size(168, 21);
+            this.FirstLineBlockCombo.Size = new System.Drawing.Size(168, 20);
             this.FirstLineBlockCombo.TabIndex = 21;
             // 
             // label12
@@ -731,7 +730,7 @@ namespace CommentReflower
                                                                    "never on own line"});
             this.BlockEndTypeCombo.Location = new System.Drawing.Point(112, 248);
             this.BlockEndTypeCombo.Name = "BlockEndTypeCombo";
-            this.BlockEndTypeCombo.Size = new System.Drawing.Size(168, 21);
+            this.BlockEndTypeCombo.Size = new System.Drawing.Size(168, 20);
             this.BlockEndTypeCombo.TabIndex = 13;
             this.BlockEndTypeCombo.SelectedIndexChanged += new System.EventHandler(this.BlockEndTypeCombo_SelectedIndexChanged);
             // 
@@ -753,7 +752,7 @@ namespace CommentReflower
                                                                      "never on own line"});
             this.BlockStartTypeCombo.Location = new System.Drawing.Point(112, 200);
             this.BlockStartTypeCombo.Name = "BlockStartTypeCombo";
-            this.BlockStartTypeCombo.Size = new System.Drawing.Size(168, 21);
+            this.BlockStartTypeCombo.Size = new System.Drawing.Size(168, 20);
             this.BlockStartTypeCombo.TabIndex = 8;
             this.BlockStartTypeCombo.SelectedIndexChanged += new System.EventHandler(this.BlockStartTypeCombo_SelectedIndexChanged);
             // 
@@ -834,7 +833,7 @@ namespace CommentReflower
             // 
             this.BlockFileTypeCombo.Location = new System.Drawing.Point(112, 176);
             this.BlockFileTypeCombo.Name = "BlockFileTypeCombo";
-            this.BlockFileTypeCombo.Size = new System.Drawing.Size(168, 21);
+            this.BlockFileTypeCombo.Size = new System.Drawing.Size(168, 20);
             this.BlockFileTypeCombo.TabIndex = 6;
             // 
             // label1
@@ -932,7 +931,7 @@ namespace CommentReflower
                                                                  "Right"});
             this.BulletEdgeCombo.Location = new System.Drawing.Point(192, 200);
             this.BulletEdgeCombo.Name = "BulletEdgeCombo";
-            this.BulletEdgeCombo.Size = new System.Drawing.Size(88, 21);
+            this.BulletEdgeCombo.Size = new System.Drawing.Size(88, 20);
             this.BulletEdgeCombo.TabIndex = 9;
             // 
             // label10
@@ -1188,14 +1187,15 @@ namespace CommentReflower
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(400, 464);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(400, 464);
             this.Name = "CommentReflowerSetup";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Comment Reflower Setup";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.CommentReflowerSetup_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.CommentReflowerSetup_HelpRequested);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BulletList_MouseUp);
             this.tabControl1.ResumeLayout(false);
@@ -1655,5 +1655,13 @@ namespace CommentReflower
         }
 
         private const string mHelpFile = @"CommentReflowerHelp.chm";
+
+        private void CommentReflowerSetup_Load(object sender, System.EventArgs e)
+        {
+            // set max and min size here (after display) to allow control to be
+            // used on different DPI displays
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+        }
     }
 }

@@ -13,7 +13,7 @@
                     StartAction = "Program"
                     StartArguments = ""
                     StartPage = ""
-                    StartProgram = "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\devenv.exe"
+                    StartProgram = "C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\devenv.exe"
                     StartURL = ""
                     StartWorkingDirectory = "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\"
                     StartWithIE = "false"

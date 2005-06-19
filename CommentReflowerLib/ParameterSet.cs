@@ -302,7 +302,7 @@ namespace CommentReflowerLib
             mUseTabsToIndent = false;
             mWrapWidth = 80;
             mMinimumBlockWidth =30;
-            }
+        }
 
         /** Copy constructor does deep copy */
         public ParameterSet(ParameterSet other)
@@ -401,10 +401,10 @@ namespace CommentReflowerLib
             w.WriteEndElement();
 
             w.WriteEndDocument();
-            //Flush the xml document to the underlying stream and
-            //close the underlying stream. The data will not be
-            //written out to the stream until either the Flush()
-            //method is called or the Close() method is called.
+            // Flush the xml document to the underlying stream and close the
+            // underlying stream. The data will not be written out to the stream
+            // until either the Flush() method is called or the Close() method
+            // is called.
             w.Close();
         }
 
@@ -534,18 +534,11 @@ namespace CommentReflowerLib
                     }
                 }
             }
-
-            if ((cb.mLineStart.Trim().Length == 0) &&
-                ((cb.mBlockStartType != StartEndBlockType.Empty) ||
-                 (cb.mBlockEndType != StartEndBlockType.Empty)))
-            {
-                throw new System.ArgumentException("Comment block line start must not be empty");
-            }
         }
 
         /**
          * Validates the bullet at the given index, throws an exception if it is
-         * invalis
+         * invalid.
          */
         public void validateBullet(int index)
         {

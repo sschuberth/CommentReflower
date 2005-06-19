@@ -292,6 +292,13 @@ namespace CommentReflowerLib
             EnvDTE.EditPoint curPoint = pt.CreateEditPoint();
             curPoint.MoveToLineAndOffset(bdata.mStartLine,1);
 
+            // seems we have to pick the reight line ending ourselves
+            string eol = "\r\n";
+            if (curPoint.GetText(-1).Length == 1)
+            {
+                eol = "\n";
+            }
+
             EnvDTE.EditPoint endPoint = pt.CreateEditPoint();
             endPoint.MoveToLineAndOffset(bdata.mEndLine,1);
 
@@ -526,7 +533,7 @@ namespace CommentReflowerLib
                     SkipColumns(curPoint, bdata.mIndentation);
                     SkipString(curPoint, bdata.mMatchedBlockStart.TrimEnd());
                     curPoint.Delete(bdata.mMatchedBlockStart.Length - bdata.mMatchedBlockStart.TrimEnd().Length);
-                    curPoint.Insert("\n" + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
+                    curPoint.Insert(eol + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
                     continue;
                 }
 
@@ -587,7 +594,7 @@ namespace CommentReflowerLib
                                 SkipColumns(curPoint, bdata.mIndentation);
                                 SkipString(curPoint, bdata.mMatchedBlockStart.TrimEnd());
                                 curPoint.Delete(bdata.mMatchedBlockStart.Length - bdata.mMatchedBlockStart.TrimEnd().Length);
-                                curPoint.Insert("\n" + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
+                                curPoint.Insert(eol + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
                             }
                             else
                             {
@@ -630,7 +637,7 @@ namespace CommentReflowerLib
                                     SkipColumns(curPoint, bdata.mIndentation);
                                     SkipString(curPoint, bdata.mMatchedBlockStart.TrimEnd());
                                     curPoint.Delete(bdata.mMatchedBlockStart.Length - bdata.mMatchedBlockStart.TrimEnd().Length);
-                                    curPoint.Insert("\n" + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
+                                    curPoint.Insert(eol + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
                                     // reprocess this moved down line!
                                 }
                                 else
@@ -662,7 +669,7 @@ namespace CommentReflowerLib
                         SkipColumns(curPoint, bdata.mIndentation);
                         SkipString(curPoint, bdata.mMatchedBlockStart.TrimEnd());
                         curPoint.Delete(bdata.mMatchedBlockStart.Length - bdata.mMatchedBlockStart.TrimEnd().Length);
-                        curPoint.Insert("\n" + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
+                        curPoint.Insert(eol + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
                         isLastLine = false;// forces reprocess even if isLatLine
                                            // was just true
                         continue;// reprocess the just moved line
@@ -690,7 +697,7 @@ namespace CommentReflowerLib
                             SkipWhitespace(dataStartPoint);
                             curPoint.Delete(dataStartPoint);
                             // insert a whole new line
-                            curPoint.Insert("\n" + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
+                            curPoint.Insert(eol + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
                             if (currentIndent > 0)
                             {
                                 curPoint.Insert(GetIndentationString(curPoint.DisplayColumn,currentIndent,blockTabSize));
@@ -739,7 +746,7 @@ namespace CommentReflowerLib
                             EnvDTE.EditPoint dataStartPoint = curPoint.CreateEditPoint();
                             SkipWhitespace(dataStartPoint);
                             curPoint.Delete(dataStartPoint);
-                            curPoint.Insert("\n" + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
+                            curPoint.Insert(eol + GetIndentationString(1,bdata.mIndentation,blockTabSize) + block.mLineStart);
                             if (currentIndent > 0)
                             {
                                 curPoint.Insert(GetIndentationString(curPoint.DisplayColumn,currentIndent,blockTabSize));
@@ -755,7 +762,7 @@ namespace CommentReflowerLib
                 (endPoint.Line != bdata.mStartLine))
             {
                 endPoint.EndOfLine();
-                endPoint.Insert("\n" + GetIndentationString(1,bdata.mIndentation,blockTabSize) + bdata.mMatchedBlockEnd);
+                endPoint.Insert(eol + GetIndentationString(1,bdata.mIndentation,blockTabSize) + bdata.mMatchedBlockEnd);
             }
             else if ((block.mBlockEndType == StartEndBlockType.OnOwnLineIfBlockIsMoreThanOne) ||
                 (block.mBlockEndType == StartEndBlockType.NeverOnOwnLine))
@@ -835,13 +842,14 @@ namespace CommentReflowerLib
             }
         }
 
-        static private void SkipString(EnvDTE.EditPoint pt, string st)
+        static private void SkipString(EnvDTE.EditPoint pt, string wanted)
         {
-            if (GetTextOnLine(pt, st.Length) != st)
+            string actual = GetTextOnLine(pt, wanted.Length);
+            if (actual != wanted)
             {
-                throw new System.ArgumentException("Error parsing expected string",st);
+                throw new System.ArgumentException("Error parsing expected string", wanted);
             }
-            pt.CharRight(st.Length);
+            pt.CharRight(wanted.Length);
         }
 
         static private string GetTextOnLine(EnvDTE.EditPoint pt, int length)

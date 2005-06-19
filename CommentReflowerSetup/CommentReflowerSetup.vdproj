@@ -27,6 +27,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_25E049B87C2A44558F76DA1CC00697AA"
+        "OwnerKey" = "8:_6DD35E3F4846F5A6246DE6941936D48D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_25E049B87C2A44558F76DA1CC00697AA"
+        "OwnerKey" = "8:_7DA981305DCC4FFEB883A9E4645DA851"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_25E049B87C2A44558F76DA1CC00697AA"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_27C0CD3524F44B1887925140B6CA9992"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,24 +53,6 @@
         {
         "MsmKey" = "8:_417B3A9B6D614F2F9BEF8E179735B28C"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4E8D97CE054A4BF5A78CD5CA7BA1C0BB"
-        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4E8D97CE054A4BF5A78CD5CA7BA1C0BB"
-        "OwnerKey" = "8:_7DA981305DCC4FFEB883A9E4645DA851"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4E8D97CE054A4BF5A78CD5CA7BA1C0BB"
-        "OwnerKey" = "8:_6DD35E3F4846F5A6246DE6941936D48D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,13 +94,13 @@
         "Entry"
         {
         "MsmKey" = "8:_8DA0582A8E379193B27830C001B80C35"
-        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "OwnerKey" = "8:_6DD35E3F4846F5A6246DE6941936D48D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8DA0582A8E379193B27830C001B80C35"
-        "OwnerKey" = "8:_6DD35E3F4846F5A6246DE6941936D48D"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -310,7 +310,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CommentReflowerLib, Version=1.0.1781.41934, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:CommentReflowerLib, Version=1.1.1996.42182, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_6DD35E3F4846F5A6246DE6941936D48D"
@@ -616,13 +616,13 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Comment Reflower"
-        "ProductCode" = "8:{EAF2A59D-2742-4EC4-A66D-D7D05A23D65B}"
-        "PackageCode" = "8:{E96B1AB4-8DF5-4709-B1F0-A3F80B509F8E}"
+        "ProductCode" = "8:{AFB26AC1-191C-4A05-88C4-64D519F924AD}"
+        "PackageCode" = "8:{C8A953B6-D6AE-4D6A-9B8F-745F7A325F8A}"
         "UpgradeCode" = "8:{DD86B0E1-09D4-4A9A-802B-8C00D1CF91CA}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "ProductVersion" = "8:1.1"
+        "ProductVersion" = "8:1.2"
         "Manufacturer" = "8:Ian Nowland"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -679,7 +679,7 @@
                                             "Transitive" = "11:FALSE"
                                                 "Keys"
                                                 {
-                                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_04979C669E164B8BA3D184C1D134867C"
+                                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_FE98F1F7B2564C5DB7FA3ABC05807D4B"
                                                     {
                                                     "Name" = "8:AddIns"
                                                     "Condition" = "8:"
@@ -714,7 +714,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:For support see thwe web page at:http://www.fixme.com"
+                                                                    "Value" = "8:For support see the web page at: http://commentreflower.sourceforge.net/"
                                                                     }
                                                                     "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_80E3E9907E0C47CEB6052A9A88187F85"
                                                                     {
@@ -842,7 +842,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:For support see thwe web page at:http://www.fixme.com"
+                                                                    "Value" = "8:For support see the web page at: http://commentreflower.sourceforge.net/"
                                                                     }
                                                                     "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_A92E225C96B34A5F88F9DA4D73D3A0E9"
                                                                     {
@@ -1642,7 +1642,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_4E8D97CE054A4BF5A78CD5CA7BA1C0BB"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_25E049B87C2A44558F76DA1CC00697AA"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"

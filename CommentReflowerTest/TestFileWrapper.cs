@@ -255,6 +255,15 @@ namespace CommentReflowerTest
                 linesPushedDown = 1;
                 charsPushedOnNextLine = st.Length-1;
             }
+            else if (st[0] == '\r')
+            {
+                string temp = GetLine(startLine).Substring(startChar);
+                SetLine(startLine,GetLine(startLine).Substring(0,startChar));
+                mLines.Insert(startLine,st.Substring(2) + temp);
+                
+                linesPushedDown = 1;
+                charsPushedOnNextLine = st.Length-2;
+            }
             else
             {
                 SetLine(startLine, GetLine(startPoint.mLineNum).Insert(startChar,st));
