@@ -309,6 +309,8 @@ namespace CommentReflower
                     }
                     BlockFileTypeCombo.Text = cb.getAssociationsAsString();
 
+                    cb.mBlockStartType = (CommentReflowerLib.StartEndBlockType)BlockStartTypeCombo.SelectedIndex;
+                    cb.mBlockEndType = (CommentReflowerLib.StartEndBlockType)BlockEndTypeCombo.SelectedIndex;
 
                     cb.mIsBlockStartRegEx = IsBlockStartRegExCheck.Checked;
                     cb.mIsBlockEndRegEx = IsBlockEndRegExCheck.Checked;
@@ -1193,6 +1195,7 @@ namespace CommentReflower
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Comment Reflower Setup";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.CommentReflowerSetup_Load);
@@ -1606,7 +1609,7 @@ namespace CommentReflower
 
         private void AboutBtn_Click(object sender, System.EventArgs e)
         {
-            MessageBox.Show(this, "Comment Reflower 1.1\nCopyright (C) 2004 Ian Nowland");
+            MessageBox.Show(this, "Comment Reflower 1.3\nCopyright (C) 2004 Ian Nowland");
         }
 
         private void CommentReflowerSetup_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)

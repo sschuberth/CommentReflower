@@ -27,24 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_25E049B87C2A44558F76DA1CC00697AA"
-        "OwnerKey" = "8:_6DD35E3F4846F5A6246DE6941936D48D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_25E049B87C2A44558F76DA1CC00697AA"
-        "OwnerKey" = "8:_7DA981305DCC4FFEB883A9E4645DA851"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_25E049B87C2A44558F76DA1CC00697AA"
-        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_27C0CD3524F44B1887925140B6CA9992"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -69,7 +51,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6DD35E3F4846F5A6246DE6941936D48D"
+        "MsmKey" = "8:_78AD00D1B6F76B728FABDEDD02DA9536"
         "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -87,6 +69,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_82B6A73D7C1E9CE31F33D051DE593876"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8CB6B258B72C47ACA4B45AB2B2F8D4EA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -94,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8DA0582A8E379193B27830C001B80C35"
-        "OwnerKey" = "8:_6DD35E3F4846F5A6246DE6941936D48D"
+        "OwnerKey" = "8:_78AD00D1B6F76B728FABDEDD02DA9536"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -111,6 +99,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AD6BC9A681E543F2900CF67F00EB2ADF"
+        "OwnerKey" = "8:_78AD00D1B6F76B728FABDEDD02DA9536"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AD6BC9A681E543F2900CF67F00EB2ADF"
+        "OwnerKey" = "8:_7DA981305DCC4FFEB883A9E4645DA851"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AD6BC9A681E543F2900CF67F00EB2ADF"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AE4283B99BEF70D271EC71FBC76D9AEC"
         "OwnerKey" = "8:_8DA0582A8E379193B27830C001B80C35"
         "MsmSig" = "8:_UNDEFINED"
@@ -119,12 +125,6 @@
         {
         "MsmKey" = "8:_C46466E049A44E00BEDF3D51BF15E2D7"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E5C48C9CB6221E8F8A70DB6B32A203ED"
-        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -306,14 +306,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_6DD35E3F4846F5A6246DE6941936D48D"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_78AD00D1B6F76B728FABDEDD02DA9536"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CommentReflowerLib, Version=1.1.1996.42182, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:CommentReflowerLib, Version=1.2.1998.389, Culture=neutral"
                 "ScatterAssemblies"
                 {
-                    "_6DD35E3F4846F5A6246DE6941936D48D"
+                    "_78AD00D1B6F76B728FABDEDD02DA9536"
                     {
                     "Name" = "8:CommentReflowerLib.dll"
                     "Attributes" = "3:512"
@@ -386,6 +386,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_82B6A73D7C1E9CE31F33D051DE593876"
+            {
+            "SourcePath" = "8:CommentReflower.tlb"
+            "TargetName" = "8:CommentReflower.tlb"
+            "Tag" = "8:"
+            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:2"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_8CB6B258B72C47ACA4B45AB2B2F8D4EA"
@@ -510,26 +530,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_E5C48C9CB6221E8F8A70DB6B32A203ED"
-            {
-            "SourcePath" = "8:CommentReflower.tlb"
-            "TargetName" = "8:CommentReflower.tlb"
-            "Tag" = "8:"
-            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:2"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_EAB335987EAC44E5BB0B75ECF678B5AF"
             {
             "SourcePath" = "8:Readme.rtf"
@@ -616,13 +616,13 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Comment Reflower"
-        "ProductCode" = "8:{AFB26AC1-191C-4A05-88C4-64D519F924AD}"
-        "PackageCode" = "8:{C8A953B6-D6AE-4D6A-9B8F-745F7A325F8A}"
+        "ProductCode" = "8:{6934433A-A7C5-4780-B562-BA2472660F61}"
+        "PackageCode" = "8:{FD46598B-9DB1-4118-BCD9-FFCFF6214D53}"
         "UpgradeCode" = "8:{DD86B0E1-09D4-4A9A-802B-8C00D1CF91CA}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "ProductVersion" = "8:1.2"
+        "ProductVersion" = "8:1.3"
         "Manufacturer" = "8:Ian Nowland"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1642,7 +1642,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_25E049B87C2A44558F76DA1CC00697AA"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_AD6BC9A681E543F2900CF67F00EB2ADF"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -1661,7 +1661,7 @@
         {
             "{8062640A-2EEE-46E9-AB67-688E9A886E9F}:_ED0142982C364444A18B517B3CB12988"
             {
-            "SourcePath" = "8:..\\CommentReflower\\obj\\Debug\\CommentReflower.dll"
+            "SourcePath" = "8:..\\CommentReflower\\obj\\Release\\CommentReflower.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
