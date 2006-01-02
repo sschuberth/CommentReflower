@@ -59,50 +59,26 @@ namespace CommentReflowerLib
             EnvDTE.TextPoint selectionEnd)
         {
             bool blockFound = false;
-            bool wasUndoContextOpen = true;
-            if ((selectionStart.DTE != null) && !selectionStart.DTE.UndoContext.IsOpen)
+            EnvDTE.EditPoint selStart = selectionStart.CreateEditPoint();
+            selStart.StartOfLine();
+            while (selStart.LessThan(selectionEnd))
             {
-                // remember we have to close it again
-                wasUndoContextOpen = false;
-                selectionStart.DTE.UndoContext.Open("Reflowing comments in selection",false);
-            }
-
-            try
-            {
-                EnvDTE.EditPoint selStart = selectionStart.CreateEditPoint();
-                selStart.StartOfLine();
-                while (selStart.LessThan(selectionEnd))
+                CommentBlock block;
+                MatchedBlockData bdata;
+                if (GetBlockContainingPoint(pset,
+                                            fileName,
+                                            selStart,
+                                            out block,
+                                            out bdata))
                 {
-                    CommentBlock block;
-                    MatchedBlockData bdata;
-                    if (GetBlockContainingPoint(
-                        pset,
-                        fileName,
-                        selStart,
-                        out block,
-                        out bdata))
-                    {
-                        blockFound = true;
-                        selStart.LineDown((bdata.mEndLine-bdata.mStartLine)+1);
-                        WrapBlock(pset,block,bdata,selectionStart);
-                    }
-                    else
-                    {
-                        selStart.LineDown(1);
-                    }
+                    blockFound = true;
+                    selStart.LineDown((bdata.mEndLine-bdata.mStartLine)+1);
+                    WrapBlock(pset,block,bdata,selectionStart);
                 }
-            }
-            catch (Exception)
-            {
-                if (!wasUndoContextOpen)
+                else
                 {
-                    selectionStart.DTE.UndoContext.Close();
+                    selStart.LineDown(1);
                 }
-                throw;
-            }
-            if (!wasUndoContextOpen)
-            {
-                selectionStart.DTE.UndoContext.Close();
             }
             return blockFound;
         }
@@ -118,39 +94,15 @@ namespace CommentReflowerLib
         {
             CommentBlock block;
             MatchedBlockData bdata;
-            if (!GetBlockContainingPoint(
-                pset,
-                fileName,
-                pt,
-                out block,
-                out bdata))
+            if (!GetBlockContainingPoint(pset,
+                                         fileName,
+                                         pt,
+                                         out block,
+                                         out bdata))
             {
                 return false;
             }
-
-            bool wasUndoContextOpen = true;
-            try
-            {
-                if ((pt.DTE != null) && !pt.DTE.UndoContext.IsOpen)
-                {
-                    // remember we have to close it again
-                    wasUndoContextOpen = false;
-                    pt.DTE.UndoContext.Open("Reflowing comment",false);
-                }
-                WrapBlock(pset,block,bdata,pt);
-                if (!wasUndoContextOpen)
-                {
-                    pt.DTE.UndoContext.Close();
-                }
-            }
-            catch (Exception)
-            {
-                if (!wasUndoContextOpen)
-                {
-                    pt.DTE.UndoContext.Close();
-                }
-                throw;
-            }
+            WrapBlock(pset,block,bdata,pt);
             return true;
         }
 

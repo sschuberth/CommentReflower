@@ -23,6 +23,8 @@ using System.Collections.Specialized;
 using System.Security.Permissions;
 using Microsoft.Win32;
 using CommentReflowerLib;
+using EnvDTE;
+using Microsoft.Office.Core;
 
 
 namespace CommentReflower
@@ -95,12 +97,18 @@ namespace CommentReflower
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button AboutBtn;
+        private System.Windows.Forms.Button AlignBtn;
 
         /** the ParameterSet set by the dialog */
         public ParameterSet mpset;
 
-        public CommentReflowerSetup(ParameterSet pset)
-        {
+        public CommentReflowerSetup(
+            ParameterSet pset,
+            _DTE applicationObject,
+            AddIn addInInstance)
+    {
+            mApplicationObject = applicationObject;
+            mAddInInstance = addInInstance;
             //
             // Required for Windows Form Designer support
             //
@@ -576,6 +584,7 @@ namespace CommentReflower
             this.OkBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.HelpBtn = new System.Windows.Forms.Button();
+            this.AlignBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.GeneralTab.SuspendLayout();
             this.BlocksTab.SuspendLayout();
@@ -597,6 +606,7 @@ namespace CommentReflower
             // 
             // GeneralTab
             // 
+            this.GeneralTab.Controls.Add(this.AlignBtn);
             this.GeneralTab.Controls.Add(this.AboutBtn);
             this.GeneralTab.Controls.Add(this.BlockMinimumWidthText);
             this.GeneralTab.Controls.Add(this.BlockWrapWidthText);
@@ -703,7 +713,7 @@ namespace CommentReflower
                                                                      "can contain text before start"});
             this.FirstLineBlockCombo.Location = new System.Drawing.Point(112, 320);
             this.FirstLineBlockCombo.Name = "FirstLineBlockCombo";
-            this.FirstLineBlockCombo.Size = new System.Drawing.Size(168, 20);
+            this.FirstLineBlockCombo.Size = new System.Drawing.Size(168, 21);
             this.FirstLineBlockCombo.TabIndex = 21;
             // 
             // label12
@@ -732,7 +742,7 @@ namespace CommentReflower
                                                                    "never on own line"});
             this.BlockEndTypeCombo.Location = new System.Drawing.Point(112, 248);
             this.BlockEndTypeCombo.Name = "BlockEndTypeCombo";
-            this.BlockEndTypeCombo.Size = new System.Drawing.Size(168, 20);
+            this.BlockEndTypeCombo.Size = new System.Drawing.Size(168, 21);
             this.BlockEndTypeCombo.TabIndex = 13;
             this.BlockEndTypeCombo.SelectedIndexChanged += new System.EventHandler(this.BlockEndTypeCombo_SelectedIndexChanged);
             // 
@@ -754,7 +764,7 @@ namespace CommentReflower
                                                                      "never on own line"});
             this.BlockStartTypeCombo.Location = new System.Drawing.Point(112, 200);
             this.BlockStartTypeCombo.Name = "BlockStartTypeCombo";
-            this.BlockStartTypeCombo.Size = new System.Drawing.Size(168, 20);
+            this.BlockStartTypeCombo.Size = new System.Drawing.Size(168, 21);
             this.BlockStartTypeCombo.TabIndex = 8;
             this.BlockStartTypeCombo.SelectedIndexChanged += new System.EventHandler(this.BlockStartTypeCombo_SelectedIndexChanged);
             // 
@@ -835,7 +845,7 @@ namespace CommentReflower
             // 
             this.BlockFileTypeCombo.Location = new System.Drawing.Point(112, 176);
             this.BlockFileTypeCombo.Name = "BlockFileTypeCombo";
-            this.BlockFileTypeCombo.Size = new System.Drawing.Size(168, 20);
+            this.BlockFileTypeCombo.Size = new System.Drawing.Size(168, 21);
             this.BlockFileTypeCombo.TabIndex = 6;
             // 
             // label1
@@ -933,7 +943,7 @@ namespace CommentReflower
                                                                  "Right"});
             this.BulletEdgeCombo.Location = new System.Drawing.Point(192, 200);
             this.BulletEdgeCombo.Name = "BulletEdgeCombo";
-            this.BulletEdgeCombo.Size = new System.Drawing.Size(88, 20);
+            this.BulletEdgeCombo.Size = new System.Drawing.Size(88, 21);
             this.BulletEdgeCombo.TabIndex = 9;
             // 
             // label10
@@ -1175,6 +1185,15 @@ namespace CommentReflower
             this.HelpBtn.TabIndex = 3;
             this.HelpBtn.Text = "Help";
             this.HelpBtn.Click += new System.EventHandler(this.HelpBtn_Click);
+            // 
+            // AlignBtn
+            // 
+            this.AlignBtn.Location = new System.Drawing.Point(160, 328);
+            this.AlignBtn.Name = "AlignBtn";
+            this.AlignBtn.Size = new System.Drawing.Size(120, 23);
+            this.AlignBtn.TabIndex = 6;
+            this.AlignBtn.Text = "Enable Align Params";
+            this.AlignBtn.Click += new System.EventHandler(this.AlignBtn_Click);
             // 
             // CommentReflowerSetup
             // 
@@ -1470,17 +1489,16 @@ namespace CommentReflower
             }
             ArrayList cPlusPlusCba = new ArrayList();
             cPlusPlusCba.Add("*.new");
-            CommentBlock newObj = new CommentBlock(
-                "New comment block",
-                (ArrayList)cPlusPlusCba.Clone(),
-                StartEndBlockType.Empty,
-                "",
-                false,
-                StartEndBlockType.Empty,
-                "",
-                false,
-                "#",
-                false);
+            CommentBlock newObj = new CommentBlock("New comment block",
+                                                   (ArrayList)cPlusPlusCba.Clone(),
+                                                   StartEndBlockType.Empty,
+                                                   "",
+                                                   false,
+                                                   StartEndBlockType.Empty,
+                                                   "",
+                                                   false,
+                                                   "#",
+                                                   false);
             mpset.mCommentBlocks.Add(newObj);
             BlockList.Items.Add(new ListViewItem(newObj.mName));
             int index = BlockList.Items.Count-1;
@@ -1609,7 +1627,7 @@ namespace CommentReflower
 
         private void AboutBtn_Click(object sender, System.EventArgs e)
         {
-            MessageBox.Show(this, "Comment Reflower 1.3\nCopyright (C) 2004 Ian Nowland");
+            MessageBox.Show(this, "Comment Reflower for Visual Studio 2003 1.4\nCopyright (C) 2006 Ian Nowland");
         }
 
         private void CommentReflowerSetup_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -1666,5 +1684,44 @@ namespace CommentReflower
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
+
+        private void AlignBtn_Click(object sender, System.EventArgs e)
+        {
+            Commands commands = mApplicationObject.Commands;
+            _CommandBars commandBars = mApplicationObject.CommandBars;
+            Command parameterAlignerCommand = null;
+            for (int i=0; i < 2; i++)
+            {
+                try
+                {
+                    object []contextGUIDS = new object[] { };
+                    parameterAlignerCommand = commands.AddNamedCommand(mAddInInstance, 
+                                                                       "ParameterAligner", 
+                                                                       "Align Parameters", 
+                                                                       "Aligns the parameters of the selected function call", 
+                                                                       false, 
+                                                                       105, 
+                                                                       ref contextGUIDS, 
+                                                                       (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
+                    break;
+                }
+                catch (Exception)
+                {
+                    if (i==0)
+                    {
+                        commands.Item("CommentReflower.Connect.ParameterAligner",-1).Delete();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            parameterAlignerCommand.AddControl(commandBars["Tools"],1);
+            parameterAlignerCommand.AddControl(commandBars["Code Window"],1);
+        }
+
+        private _DTE mApplicationObject;
+        private AddIn mAddInInstance;
     }
 }

@@ -9,7 +9,7 @@
             <Settings
                 ApplicationIcon = "..\CommentReflowerLib\Reflower.ico"
                 AssemblyKeyContainerName = ""
-                AssemblyName = "CommentReflower"
+                AssemblyName = "CommentReflower2003"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"

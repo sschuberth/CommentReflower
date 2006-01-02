@@ -9,7 +9,7 @@
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "CommentReflowerLib"
+                AssemblyName = "CommentReflowerLib2003"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -110,6 +110,11 @@
                 />
                 <File
                     RelPath = "CommentReflowerObj.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ParameterAlignerObj.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

@@ -151,7 +151,39 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "Input\AlignerTest.cpp"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "Input\ExampleFile.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\Regression.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\Regression.JAM"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Input\Regression.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\Regression.vb"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\RegressionBlankLines.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\RegressionBreakFlowStrings.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\RegressionBullets.cpp"
                     BuildAction = "Content"
                 />
                 <File

@@ -16,16 +16,17 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
+using System;
+using Microsoft.Office.Core;
+using Extensibility;
+using System.Runtime.InteropServices;
+using EnvDTE;
+using System.Windows.Forms;
+using CommentReflowerLib;
+
+
 namespace CommentReflower
 {
-    using System;
-    using Microsoft.Office.Core;
-    using Extensibility;
-    using System.Runtime.InteropServices;
-    using EnvDTE;
-    using System.Windows.Forms;
-    using CommentReflowerLib;
-
     /// <summary>
     ///   The object for implementing the Add-in.
     /// </summary>
@@ -64,10 +65,11 @@ namespace CommentReflower
         ///      Object representing this Add-in.
         /// </param>
         /// <seealso class='IDTExtensibility2' />
-        public void OnConnection(object application, 
-                                 Extensibility.ext_ConnectMode connectMode, 
-                                 object addInInst, 
-                                 ref System.Array custom)
+        public void OnConnection(
+            object application, 
+            Extensibility.ext_ConnectMode connectMode, 
+            object addInInst, 
+            ref System.Array custom)
         {
             mApplicationObject = (_DTE)application;
             mAddInInstance = (AddIn)addInInst;
@@ -97,15 +99,14 @@ namespace CommentReflower
                     {
                         try
                         {
-                            reflowPointCommand  = commands.AddNamedCommand(
-                                mAddInInstance, 
-                                "PointCommentReflower", 
-                                "Reflow Comment Containing Cursor", 
-                                "Reflows the comment containing the cursor", 
-                                false, 
-                                104, 
-                                ref contextGUIDS, 
-                                (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
+                            reflowPointCommand  = commands.AddNamedCommand(mAddInInstance, 
+                                                                           "PointCommentReflower", 
+                                                                           "Reflow Comment Containing Cursor", 
+                                                                           "Reflows the comment containing the cursor", 
+                                                                           false, 
+                                                                           104, 
+                                                                           ref contextGUIDS, 
+                                                                           (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
                             break;
                         }
                         catch (Exception)
@@ -125,15 +126,14 @@ namespace CommentReflower
                     {
                         try
                         {
-                            reflowSelectionCommand  = commands.AddNamedCommand(
-                                mAddInInstance, 
-                                "SelectionCommentReflower", 
-                                "Reflow All Comments in Selected", 
-                                "Reflows comments in the selected text", 
-                                false, 
-                                103, 
-                                ref contextGUIDS, 
-                                (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
+                            reflowSelectionCommand  = commands.AddNamedCommand(mAddInInstance, 
+                                                                               "SelectionCommentReflower", 
+                                                                               "Reflow All Comments in Selected", 
+                                                                               "Reflows comments in the selected text", 
+                                                                               false, 
+                                                                               103, 
+                                                                               ref contextGUIDS, 
+                                                                               (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
                             break;
                         }
                         catch (Exception)
@@ -152,15 +152,14 @@ namespace CommentReflower
                     {
                         try
                         {
-                            reflowSettingsCommand  = commands.AddNamedCommand(
-                                mAddInInstance, 
-                                "CommentReflowerSettings", 
-                                "Comment Reflower Settings", 
-                                "Settings dialog for Comment Reflower", 
-                                false, 
-                                102, 
-                                ref contextGUIDS, 
-                                (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
+                            reflowSettingsCommand  = commands.AddNamedCommand(mAddInInstance, 
+                                                                              "CommentReflowerSettings", 
+                                                                              "Comment Reflower Settings", 
+                                                                              "Settings dialog for Comment Reflower", 
+                                                                              false, 
+                                                                              102, 
+                                                                              ref contextGUIDS, 
+                                                                              (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
                             break;
                         }
                         catch (Exception)
@@ -176,12 +175,12 @@ namespace CommentReflower
                         }
                     }
 
-                    reflowSettingsCommand.AddControl(mApplicationObject.CommandBars["Tools"],1);
-                    reflowSelectionCommand.AddControl(mApplicationObject.CommandBars["Tools"],1);
-                    reflowPointCommand.AddControl(mApplicationObject.CommandBars["Tools"],1).BeginGroup = true;
+                    reflowSettingsCommand.AddControl(commandBars["Tools"],1);
+                    reflowSelectionCommand.AddControl(commandBars["Tools"],1);
+                    reflowPointCommand.AddControl(commandBars["Tools"],1).BeginGroup = true;
 
-                    reflowSelectionCommand.AddControl(mApplicationObject.CommandBars["Code Window"],1);
-                    reflowPointCommand.AddControl(mApplicationObject.CommandBars["Code Window"],1);
+                    reflowSelectionCommand.AddControl(commandBars["Code Window"],1);
+                    reflowPointCommand.AddControl(commandBars["Code Window"],1);
                 }
                 catch(System.Exception e)
                 {
@@ -240,7 +239,7 @@ namespace CommentReflower
         public void OnBeginShutdown(ref System.Array custom)
         {
         }
-        
+
         /// <summary>
         ///      Implements the QueryStatus method of the IDTCommandTarget interface.
         ///      This is called when the command's availability is updated
@@ -258,7 +257,11 @@ namespace CommentReflower
         ///     Text requested by the neededText parameter.
         /// </param>
         /// <seealso class='Exec' />
-        public void QueryStatus(string commandName, EnvDTE.vsCommandStatusTextWanted neededText, ref EnvDTE.vsCommandStatus status, ref object commandText)
+        public void QueryStatus(
+            string commandName, 
+            EnvDTE.vsCommandStatusTextWanted neededText, 
+            ref EnvDTE.vsCommandStatus status, 
+            ref object commandText)
         {
             if(neededText == EnvDTE.vsCommandStatusTextWanted.vsCommandStatusTextWantedNone)
             {
@@ -299,8 +302,21 @@ namespace CommentReflower
                 {
                     status = (vsCommandStatus)vsCommandStatus.vsCommandStatusSupported | vsCommandStatus.vsCommandStatusEnabled;
                 }
+                else if(commandName == "CommentReflower.Connect.ParameterAligner")
+                {
+                    if ((mApplicationObject.ActiveDocument == null) ||
+                        (mParams.getBlocksForFileName(mApplicationObject.ActiveDocument.Name).Count == 0))
+                    {
+                        status = vsCommandStatus.vsCommandStatusUnsupported;
+                    }
+                    else
+                    {
+                        status = (vsCommandStatus)vsCommandStatus.vsCommandStatusSupported | vsCommandStatus.vsCommandStatusEnabled;
+                    }
+                }
             }
         }
+
 
         /// <summary>
         ///      Implements the Exec method of the IDTCommandTarget interface.
@@ -322,7 +338,12 @@ namespace CommentReflower
         ///     Informs the caller if the command was handled or not.
         /// </param>
         /// <seealso class='Exec' />
-        public void Exec(string commandName, EnvDTE.vsCommandExecOption executeOption, ref object varIn, ref object varOut, ref bool handled)
+        public void Exec(
+            string commandName, 
+            EnvDTE.vsCommandExecOption executeOption, 
+            ref object varIn, 
+            ref object varOut, 
+            ref bool handled)
         {
             handled = false;
             if(executeOption == EnvDTE.vsCommandExecOption.vsCommandExecOptionDoDefault)
@@ -331,11 +352,24 @@ namespace CommentReflower
                 {
                     handled = true;
                     TextSelection sel = (TextSelection)mApplicationObject.ActiveDocument.Selection;
-                    if (!CommentReflowerObj.WrapBlockContainingPoint(mParams,
-                        mApplicationObject.ActiveDocument.Name,
-                        sel.ActivePoint))
+
+                    sel.DTE.UndoContext.Open("Reflowing comments in selection",false);
+                    try
                     {
-                        MessageBox.Show("No comment found");
+                        if (!CommentReflowerObj.WrapBlockContainingPoint(mParams,
+                                                                         mApplicationObject.ActiveDocument.Name,
+                                                                         sel.ActivePoint))
+                        {
+                            MessageBox.Show("No comment found");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Exception processing command: " + e.ToString());
+                    }
+                    finally
+                    {
+                        sel.DTE.UndoContext.Close();
                     }
                     return;
                 }
@@ -343,20 +377,33 @@ namespace CommentReflower
                 {
                     handled = true;
                     TextSelection sel = (TextSelection)mApplicationObject.ActiveDocument.Selection;
-                    if (!CommentReflowerObj.WrapAllBlocksInSelection(
-                        mParams,
-                        mApplicationObject.ActiveDocument.Name,
-                        sel.TopPoint,
-                        sel.BottomPoint))
+                    sel.DTE.UndoContext.Open("Reflowing comments in selection",false);
+                    try
                     {
-                        MessageBox.Show("No comment found");
+                        if (!CommentReflowerObj.WrapAllBlocksInSelection(mParams,
+                                                                         mApplicationObject.ActiveDocument.Name,
+                                                                         sel.TopPoint,
+                                                                         sel.BottomPoint))
+                        {
+                            MessageBox.Show("No comment found");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Exception processing command: " + e.ToString());
+                    }
+                    finally
+                    {
+                        sel.DTE.UndoContext.Close();
                     }
                     return;
                 }
                 else if(commandName == "CommentReflower.Connect.CommentReflowerSettings")
                 {
                     handled = true;
-                    CommentReflowerSetup setup = new CommentReflowerSetup(mParams);
+                    CommentReflowerSetup setup = new CommentReflowerSetup(mParams,
+                                                                          mApplicationObject,
+                                                                          mAddInInstance);
                     if (setup.ShowDialog() == DialogResult.OK)
                     {
                         mParams = setup.mpset;
@@ -364,6 +411,27 @@ namespace CommentReflower
                     }
                     setup.Dispose();
                     return;
+                }
+                else if(commandName == "CommentReflower.Connect.ParameterAligner")
+                {
+                    TextSelection sel = (TextSelection)mApplicationObject.ActiveDocument.Selection;
+                    sel.DTE.UndoContext.Open("Reflowing comments in selection",false);
+                    try
+                    {
+                        EnvDTE.EditPoint outPt;
+                        if (!ParameterAlignerObj.go(sel.ActivePoint, out outPt))
+                        {
+                            MessageBox.Show("Function call not found.");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Exception processing command: " + e.ToString());
+                    }
+                    finally
+                    {
+                        sel.DTE.UndoContext.Close();
+                    }
                 }
             }
         }
