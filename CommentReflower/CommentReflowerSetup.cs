@@ -24,7 +24,12 @@ using System.Security.Permissions;
 using Microsoft.Win32;
 using CommentReflowerLib;
 using EnvDTE;
+#if ISVS2003
 using Microsoft.Office.Core;
+#else
+using EnvDTE80;
+using Microsoft.VisualStudio.CommandBars;
+#endif
 
 
 namespace CommentReflower
@@ -1627,7 +1632,11 @@ namespace CommentReflower
 
         private void AboutBtn_Click(object sender, System.EventArgs e)
         {
+#if ISVS2003
             MessageBox.Show(this, "Comment Reflower for Visual Studio 2003 1.4\nCopyright (C) 2006 Ian Nowland");
+#else
+            MessageBox.Show(this, "Comment Reflower for Visual Studio 2005 1.4\nCopyright (C) 2006 Ian Nowland");
+#endif
         }
 
         private void CommentReflowerSetup_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
@@ -1687,8 +1696,13 @@ namespace CommentReflower
 
         private void AlignBtn_Click(object sender, System.EventArgs e)
         {
+#if ISVS2003
             Commands commands = mApplicationObject.Commands;
             _CommandBars commandBars = mApplicationObject.CommandBars;
+#else
+            Commands2 commands = (Commands2)mApplicationObject.Commands;
+            _CommandBars commandBars = (_CommandBars)mApplicationObject.CommandBars;
+#endif
             Command parameterAlignerCommand = null;
             for (int i=0; i < 2; i++)
             {

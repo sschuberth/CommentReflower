@@ -1,7 +1,7 @@
 "DeployProject"
 {
-"VSVersion" = "3:800"
-"ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
+"VSVersion" = "3:701"
+"ProjectType" = "8:{2C2AF0D9-9B47-4FE5-BEF2-169778172667}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:CommentReflowerSetup"
 "LanguageId" = "3:1033"
@@ -15,8 +15,14 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_25D46F753565098162641D58C20458DE"
-        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "MsmKey" = "8:_21CEFE334A521E5670314F799BBD6B9E"
+        "OwnerKey" = "8:_8DA0582A8E379193B27830C001B80C35"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_21CEFE334A521E5670314F799BBD6B9E"
+        "OwnerKey" = "8:_5CB0C50389C142C75B5881FF3F160BAA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -33,26 +39,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_43EC13AB54201AA62D90C51E3A2C2575"
-        "OwnerKey" = "8:_D72BABE3CCBEF03854910A1A9CC60D05"
+        "MsmKey" = "8:_5CB0C50389C142C75B5881FF3F160BAA"
+        "OwnerKey" = "8:_8DA0582A8E379193B27830C001B80C35"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_43EC13AB54201AA62D90C51E3A2C2575"
-        "OwnerKey" = "8:_25D46F753565098162641D58C20458DE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_43EC13AB54201AA62D90C51E3A2C2575"
+        "MsmKey" = "8:_5CB0C50389C142C75B5881FF3F160BAA"
         "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6D947EC4AF11BB7BF304A2A79F2542D3"
-        "OwnerKey" = "8:_43EC13AB54201AA62D90C51E3A2C2575"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,8 +63,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_89567BFDD1DE1A535C785AFA58878B73"
-        "OwnerKey" = "8:_25D46F753565098162641D58C20458DE"
+        "MsmKey" = "8:_856AFA16B80B1B05A42022EB28A5B44A"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -81,25 +75,37 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8DA0582A8E379193B27830C001B80C35"
+        "OwnerKey" = "8:_856AFA16B80B1B05A42022EB28A5B44A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8DA0582A8E379193B27830C001B80C35"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_97720B0723098C71D9CCE9BC8F96C669"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AE4283B99BEF70D271EC71FBC76D9AEC"
+        "OwnerKey" = "8:_8DA0582A8E379193B27830C001B80C35"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C46466E049A44E00BEDF3D51BF15E2D7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CF481B3E45F97705059AE37090C5581F"
-        "OwnerKey" = "8:_E9D4CE0EE872212580179166D0501360"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D72BABE3CCBEF03854910A1A9CC60D05"
-        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E9D4CE0EE872212580179166D0501360"
+        "MsmKey" = "8:_D8F6EB9EF5278755BBBD78B795927EA7"
         "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -117,38 +123,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
+        "MsmKey" = "8:_F1D15D42BCC64975826648ADC3FE37AC"
+        "OwnerKey" = "8:_856AFA16B80B1B05A42022EB28A5B44A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_F1D15D42BCC64975826648ADC3FE37AC"
         "OwnerKey" = "8:_7DA981305DCC4FFEB883A9E4645DA851"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_25D46F753565098162641D58C20458DE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E9D4CE0EE872212580179166D0501360"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D72BABE3CCBEF03854910A1A9CC60D05"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_43EC13AB54201AA62D90C51E3A2C2575"
+        "MsmKey" = "8:_F1D15D42BCC64975826648ADC3FE37AC"
+        "OwnerKey" = "8:_ED0142982C364444A18B517B3CB12988"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -159,7 +147,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\CommentReflowerSetup.msi"
+        "OutputFilename" = "8:Debug2003\\CommentReflower2003Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -169,29 +157,13 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
-            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
-            {
-            "Enabled" = "11:TRUE"
-            "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
-            "Url" = "8:"
-            "ComponentsUrl" = "8:"
-                "Items"
-                {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
-                    {
-                    "Name" = "8:Microsoft .NET Framework 2.0"
-                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
-                    }
-                }
-            }
         }
         "Release"
         {
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\CommentReflowerSetup.msi"
+        "OutputFilename" = "8:Release2003\\CommentReflower2003Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -201,17 +173,6 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
-            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
-            {
-            "Enabled" = "11:TRUE"
-            "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
-            "Url" = "8:"
-            "ComponentsUrl" = "8:"
-                "Items"
-                {
-                }
-            }
         }
     }
     "Deployable"
@@ -229,33 +190,34 @@
         {
             "LaunchCondition"
             {
-                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_287E1CF6CB59484AAE716DC95AB46462"
+                "{2522A265-4974-4402-83C5-3B575A2E935A}:_287E1CF6CB59484AAE716DC95AB46462"
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:2.0.50727"
-                "AllowLaterVersions" = "11:FALSE"
-                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 "SupportedRuntimes" = "8:1.1.4322"
+                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
             }
         }
+        "Feature"
+        {
+        }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_25D46F753565098162641D58C20458DE"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_21CEFE334A521E5670314F799BBD6B9E"
             {
             "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_25D46F753565098162641D58C20458DE"
+                    "_21CEFE334A521E5670314F799BBD6B9E"
                     {
-                    "Name" = "8:EnvDTE80.dll"
+                    "Name" = "8:stdole.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:EnvDTE80.dll"
+            "SourcePath" = "8:stdole.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
@@ -269,11 +231,11 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:FALSE"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_27C0CD3524F44B1887925140B6CA9992"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_27C0CD3524F44B1887925140B6CA9992"
             {
             "SourcePath" = "8:..\\gpl.rtf"
             "TargetName" = "8:gpl.rtf"
@@ -293,7 +255,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_417B3A9B6D614F2F9BEF8E179735B28C"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_417B3A9B6D614F2F9BEF8E179735B28C"
             {
             "SourcePath" = "8:..\\CommentReflowerLib\\Reflower.ico"
             "TargetName" = "8:Reflower.ico"
@@ -313,20 +275,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_43EC13AB54201AA62D90C51E3A2C2575"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_5CB0C50389C142C75B5881FF3F160BAA"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:Office, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_43EC13AB54201AA62D90C51E3A2C2575"
+                    "_5CB0C50389C142C75B5881FF3F160BAA"
                     {
-                    "Name" = "8:EnvDTE.dll"
+                    "Name" = "8:Office.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:EnvDTE.dll"
+            "SourcePath" = "8:Office.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
@@ -344,27 +306,7 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D947EC4AF11BB7BF304A2A79F2542D3"
-            {
-            "SourcePath" = "8:dte80a.olb"
-            "TargetName" = "8:dte80a.olb"
-            "Tag" = "8:"
-            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C040FD7493941B49912ACC4DB52E1D4"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_7C040FD7493941B49912ACC4DB52E1D4"
             {
             "SourcePath" = "8:..\\gpl.txt"
             "TargetName" = "8:gpl.txt"
@@ -384,7 +326,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7DA981305DCC4FFEB883A9E4645DA851"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_7DA981305DCC4FFEB883A9E4645DA851"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
@@ -415,10 +357,21 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89567BFDD1DE1A535C785AFA58878B73"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_856AFA16B80B1B05A42022EB28A5B44A"
             {
-            "SourcePath" = "8:dte80.olb"
-            "TargetName" = "8:dte80.olb"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CommentReflowerLib2003, Version=1.4.2194.37560, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_856AFA16B80B1B05A42022EB28A5B44A"
+                    {
+                    "Name" = "8:CommentReflowerLib2003.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:CommentReflowerLib2003.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
             "Condition" = "8:"
@@ -435,7 +388,7 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8CB6B258B72C47ACA4B45AB2B2F8D4EA"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_8CB6B258B72C47ACA4B45AB2B2F8D4EA"
             {
             "SourcePath" = "8:..\\CommentReflower\\Help\\CommentReflowerHelp.chm"
             "TargetName" = "8:CommentReflowerHelp.chm"
@@ -455,7 +408,89 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C46466E049A44E00BEDF3D51BF15E2D7"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_8DA0582A8E379193B27830C001B80C35"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EnvDTE, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_8DA0582A8E379193B27830C001B80C35"
+                    {
+                    "Name" = "8:EnvDTE.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:EnvDTE.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_97720B0723098C71D9CCE9BC8F96C669"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Extensibility, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_97720B0723098C71D9CCE9BC8F96C669"
+                    {
+                    "Name" = "8:Extensibility.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Extensibility.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_AE4283B99BEF70D271EC71FBC76D9AEC"
+            {
+            "SourcePath" = "8:dte.olb"
+            "TargetName" = "8:dte.olb"
+            "Tag" = "8:"
+            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_C46466E049A44E00BEDF3D51BF15E2D7"
             {
             "SourcePath" = "8:..\\CommentReflowerTest\\Input\\ExampleFile.cpp"
             "TargetName" = "8:ExampleFile.cpp"
@@ -475,10 +510,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF481B3E45F97705059AE37090C5581F"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_D8F6EB9EF5278755BBBD78B795927EA7"
             {
-            "SourcePath" = "8:vsmso.olb"
-            "TargetName" = "8:vsmso.olb"
+            "SourcePath" = "8:CommentReflower2003.tlb"
+            "TargetName" = "8:CommentReflower2003.tlb"
             "Tag" = "8:"
             "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
             "Condition" = "8:"
@@ -490,74 +525,12 @@
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
-            "Register" = "3:1"
+            "Register" = "3:2"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D72BABE3CCBEF03854910A1A9CC60D05"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CommentReflowerLib2005, Version=1.4.2193.41634, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_D72BABE3CCBEF03854910A1A9CC60D05"
-                    {
-                    "Name" = "8:CommentReflowerLib2005.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:CommentReflowerLib2005.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E9D4CE0EE872212580179166D0501360"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.VisualStudio.CommandBars, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_E9D4CE0EE872212580179166D0501360"
-                    {
-                    "Name" = "8:Microsoft.VisualStudio.CommandBars.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.VisualStudio.CommandBars.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EAB335987EAC44E5BB0B75ECF678B5AF"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_EAB335987EAC44E5BB0B75ECF678B5AF"
             {
             "SourcePath" = "8:Readme.rtf"
             "TargetName" = "8:Readme.rtf"
@@ -583,7 +556,7 @@
         }
         "Folder"
         {
-            "{3C67513D-01DD-4637-8A68-80971EB9504F}:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
+            "{58C0ADA3-3CEA-43BD-A3B3-2EA121BC8217}:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"
             {
             "DefaultLocation" = "8:[ProgramFilesFolder][ProductName]"
             "Name" = "8:#1925"
@@ -593,7 +566,7 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D80D03E3632A4180879D5A703AACCF2C"
+                    "{F27BD5C5-A65D-4608-96D4-7C5DA1F76302}:_D80D03E3632A4180879D5A703AACCF2C"
                     {
                     "Name" = "8:1033"
                     "AlwaysCreate" = "11:FALSE"
@@ -606,7 +579,7 @@
                     }
                 }
             }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_B9445A8F52F846BC8B3590B38F6EC6F1"
+            "{78BAF5CE-F2E5-45BE-83BC-DB6AF387E941}:_B9445A8F52F846BC8B3590B38F6EC6F1"
             {
             "Name" = "8:#1919"
             "AlwaysCreate" = "11:FALSE"
@@ -617,7 +590,7 @@
                 {
                 }
             }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_D48AE6C0DFAD4AC79762A9B6DBD1466E"
+            "{78BAF5CE-F2E5-45BE-83BC-DB6AF387E941}:_D48AE6C0DFAD4AC79762A9B6DBD1466E"
             {
             "Name" = "8:#1916"
             "AlwaysCreate" = "11:FALSE"
@@ -642,19 +615,18 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Comment Reflower for Visual Studio 2005"
-        "ProductCode" = "8:{FCA4756D-2B85-4019-A361-50687087C0DE}"
-        "PackageCode" = "8:{D324079E-CBA2-4099-B735-4E1536B81E61}"
-        "UpgradeCode" = "8:{F3243397-C43F-4929-B345-42CD2935ECE3}"
+        "ProductName" = "8:Comment Reflower For Visual Studio 2003"
+        "ProductCode" = "8:{05187B09-CBB4-4A69-8A84-3255CC145444}"
+        "PackageCode" = "8:{96D631FE-4750-4D1C-8ADF-6338213F3C84}"
+        "UpgradeCode" = "8:{DD86B0E1-09D4-4A9A-802B-8C00D1CF91CA}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.4"
         "Manufacturer" = "8:Ian Nowland"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Comment Reflower For Visual Studio 2005"
+        "Title" = "8:Comment Reflower For Visual Studio 2003"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Ian Nowland"
         "Keywords" = "8:"
@@ -664,10 +636,6 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
-        "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:"
-        "RunPostBuildEvent" = "3:0"
         }
         "Registry"
         {
@@ -675,7 +643,7 @@
             {
                 "Keys"
                 {
-                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_2185008335BC42C5AD70C49A9D4ECFF7"
+                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_2185008335BC42C5AD70C49A9D4ECFF7"
                     {
                     "Name" = "8:Software"
                     "Condition" = "8:"
@@ -684,7 +652,7 @@
                     "Transitive" = "11:FALSE"
                         "Keys"
                         {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_8720CFE69A904C3D864C005784CE1442"
+                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_8720CFE69A904C3D864C005784CE1442"
                             {
                             "Name" = "8:Microsoft"
                             "Condition" = "8:"
@@ -693,25 +661,25 @@
                             "Transitive" = "11:FALSE"
                                 "Keys"
                                 {
-                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_BD130E93CB384EFB8BDEAB7388C2BF03"
+                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_5D1BB74FB8E54A76AE40884B65BCE345"
                                     {
-                                    "Name" = "8:VisualStudio"
+                                    "Name" = "8:VSA"
                                     "Condition" = "8:"
                                     "AlwaysCreate" = "11:TRUE"
                                     "DeleteAtUninstall" = "11:FALSE"
                                     "Transitive" = "11:FALSE"
                                         "Keys"
                                         {
-                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_836BD97F42C74BA09E0EF9E19F0DD752"
+                                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_4BBBECC115A4406D991C61B7FEED6472"
                                             {
-                                            "Name" = "8:8.0"
+                                            "Name" = "8:7.1"
                                             "Condition" = "8:"
                                             "AlwaysCreate" = "11:TRUE"
                                             "DeleteAtUninstall" = "11:FALSE"
                                             "Transitive" = "11:FALSE"
                                                 "Keys"
                                                 {
-                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_EB1A6CB1D9DB4BD79D6741B87F5DF855"
+                                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_FE98F1F7B2564C5DB7FA3ABC05807D4B"
                                                     {
                                                     "Name" = "8:AddIns"
                                                     "Condition" = "8:"
@@ -720,9 +688,9 @@
                                                     "Transitive" = "11:FALSE"
                                                         "Keys"
                                                         {
-                                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_00ECD135B1354850A09B97A4F1D122DE"
+                                                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_36AA72478EA94768805FE15A051A6E54"
                                                             {
-                                                            "Name" = "8:CommentReflower2005.Connect"
+                                                            "Name" = "8:CommentReflower2003.Connect"
                                                             "Condition" = "8:"
                                                             "AlwaysCreate" = "11:TRUE"
                                                             "DeleteAtUninstall" = "11:FALSE"
@@ -732,15 +700,7 @@
                                                                 }
                                                                 "Values"
                                                                 {
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_237C227B05DE40DBBF2B3171C6E229E5"
-                                                                    {
-                                                                    "Name" = "8:CommandLineSafe"
-                                                                    "Condition" = "8:"
-                                                                    "Transitive" = "11:FALSE"
-                                                                    "ValueTypes" = "3:3"
-                                                                    "Value" = "3:0"
-                                                                    }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_3D5749B2D20346FCA27823712E1F6079"
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_1023EC9AC4534270B3F5A4AF2725EBE7"
                                                                     {
                                                                     "Name" = "8:Description"
                                                                     "Condition" = "8:"
@@ -748,15 +708,7 @@
                                                                     "ValueTypes" = "3:1"
                                                                     "Value" = "8:Utility for reflowing text in comment blocks"
                                                                     }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_81957145429B4CED95B50EBD1815836A"
-                                                                    {
-                                                                    "Name" = "8:AboutBoxIcon"
-                                                                    "Condition" = "8:"
-                                                                    "Transitive" = "11:FALSE"
-                                                                    "ValueTypes" = "3:4"
-                                                                    "Value" = "8:0000010002002020100000000000E8020000260000001010100000000000280100000E0300002800000020000000400000000100040000000000800200000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ABA00000000000000000000000000000BAB00000000000000000000000000000ABA00000000000000000000000F00000BAB00000000000008888888888F0ABABABABABA0000000008F77777777F0BABABABABAB0000000008F77777777F0ABABABABABA0000000008F77777777F00000BAB00000000000008F77777777FFFFF0ABA00000008880008F777777777777F0BAB00000887788008F777777777777F0ABA000008FF770778F777777777777F0000000008FFF78088F777777777777FFFFFF000008FF70008F7777777777777777800000008880008F7777777777777777800000000000008F7777777777777777800000000000008F7777777777777777800000000000008F7777777777777777800000000000008FFFFFFFFFFFFFFFFF800000000000008888888888888888888000000000000000000870000008700000000000000000000008F0000008F000000000000000000000008000000080000000000000000000000808000008080000000000000000000877788008777880000000000000000008FF778008FF7780000000000000000008FFF78008FFF7800000000000000000008FF700008FF7000000000000000000000777000007770000000000000000000000000000000000000000FFFFFFFFFFFFFE0FFFFFFE0FFFFFFE0FFFFFFE0FFF000000FF000000FF000000FF000000FF000000C700000F8300000F0000000F0000000F0000000F8300000FC700000FFF00000FFF00000FFF00000FFF00000FFF00000FFFF8F8FFFFF8F8FFFFF8F8FFFFF0707FFFE0203FFFE0203FFFE0203FFFF0707FFFF8F8FFFFFFFFFF2800000010000000200000000100040000000000C00000000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0000000000000000000000000000000000000000000000A000000000000000B00000000000F0ABABA000008F88F000B00000008F77FFF0A00070708F7777F000000F008F7777FFFF0070708F777777800000008FFFFFFF800000008888888880000000000000000000000000070700000000000000F00000000000000707000000FFFF0000FFE30000FFE30000FF800000F0000000F0000000F0030000100300000003000010030000F0030000F0030000FF7F0000FE3F0000FE3F0000FE3F0000"
-                                                                    }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_82F1FC004CB2483085F995821FDDDF59"
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_16A31E7EE83C4B1EAC525148CE4BC93C"
                                                                     {
                                                                     "Name" = "8:AboutBoxDetails"
                                                                     "Condition" = "8:"
@@ -764,31 +716,31 @@
                                                                     "ValueTypes" = "3:1"
                                                                     "Value" = "8:For support see the web page at: http://commentreflower.sourceforge.net/"
                                                                     }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_A92E225C96B34A5F88F9DA4D73D3A0E9"
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_80E3E9907E0C47CEB6052A9A88187F85"
                                                                     {
-                                                                    "Name" = "8:SatelliteDllName"
+                                                                    "Name" = "8:AboutBoxIcon"
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
-                                                                    "ValueTypes" = "3:1"
-                                                                    "Value" = "8:CommentReflowerResourceDll.dll"
+                                                                    "ValueTypes" = "3:4"
+                                                                    "Value" = "8:0000010002002020100000000000E8020000260000001010100000000000280100000E0300002800000020000000400000000100040000000000800200000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ABA00000000000000000000000000000BAB00000000000000000000000000000ABA00000000000000000000000F00000BAB00000000000008888888888F0ABABABABABA0000000008F77777777F0BABABABABAB0000000008F77777777F0ABABABABABA0000000008F77777777F00000BAB00000000000008F77777777FFFFF0ABA00000008880008F777777777777F0BAB00000887788008F777777777777F0ABA000008FF770778F777777777777F0000000008FFF78088F777777777777FFFFFF000008FF70008F7777777777777777800000008880008F7777777777777777800000000000008F7777777777777777800000000000008F7777777777777777800000000000008F7777777777777777800000000000008FFFFFFFFFFFFFFFFF800000000000008888888888888888888000000000000000000870000008700000000000000000000008F0000008F000000000000000000000008000000080000000000000000000000808000008080000000000000000000877788008777880000000000000000008FF778008FF7780000000000000000008FFF78008FFF7800000000000000000008FF700008FF7000000000000000000000777000007770000000000000000000000000000000000000000FFFFFFFFFFFFFE0FFFFFFE0FFFFFFE0FFFFFFE0FFF000000FF000000FF000000FF000000FF000000C700000F8300000F0000000F0000000F0000000F8300000FC700000FFF00000FFF00000FFF00000FFF00000FFF00000FFFF8F8FFFFF8F8FFFFF8F8FFFFF0707FFFE0203FFFE0203FFFE0203FFFF0707FFFF8F8FFFFFFFFFF2800000010000000200000000100040000000000C00000000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0000000000000000000000000000000000000000000000A000000000000000B00000000000F0ABABA000008F88F000B00000008F77FFF0A00070708F7777F000000F008F7777FFFF0070708F777777800000008FFFFFFF800000008888888880000000000000000000000000070700000000000000F00000000000000707000000FFFF0000FFE30000FFE30000FF800000F0000000F0000000F0030000100300000003000010030000F0030000F0030000FF7F0000FE3F0000FE3F0000FE3F0000"
                                                                     }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_AAFBB8036820464093BC4397C818036E"
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_B2F0C7E807B9421CAF7E8A539389418A"
                                                                     {
-                                                                    "Name" = "8:CommandPreload"
+                                                                    "Name" = "8:LoadBehavior"
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:3"
                                                                     "Value" = "3:1"
                                                                     }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_AD5B21388286460090D41CDD572F4EAB"
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_B950A2EB79DE4808BF9F295AEB12F75D"
                                                                     {
-                                                                    "Name" = "8:SatelliteDllPath"
+                                                                    "Name" = "8:CommandLineSafe"
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
-                                                                    "ValueTypes" = "3:1"
-                                                                    "Value" = "8:[TARGETDIR]"
+                                                                    "ValueTypes" = "3:3"
+                                                                    "Value" = "3:0"
                                                                     }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_C641EE66FC53431FA21934DBFB197134"
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_E41FBC93FB58452F9B59F65B25E4BAA8"
                                                                     {
                                                                     "Name" = "8:FriendlyName"
                                                                     "Condition" = "8:"
@@ -796,7 +748,135 @@
                                                                     "ValueTypes" = "3:1"
                                                                     "Value" = "8:Comment Reflower"
                                                                     }
-                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_F9257F88DF554D9486E6FFC6CC83FB26"
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_F0A31D457E3A4F11B7B9A79934C47D42"
+                                                                    {
+                                                                    "Name" = "8:CommandPreload"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:3"
+                                                                    "Value" = "3:1"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        "Values"
+                                                        {
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
+                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_BD130E93CB384EFB8BDEAB7388C2BF03"
+                                    {
+                                    "Name" = "8:VisualStudio"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:TRUE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_836BD97F42C74BA09E0EF9E19F0DD752"
+                                            {
+                                            "Name" = "8:7.1"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:TRUE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_EB1A6CB1D9DB4BD79D6741B87F5DF855"
+                                                    {
+                                                    "Name" = "8:AddIns"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:TRUE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_00ECD135B1354850A09B97A4F1D122DE"
+                                                            {
+                                                            "Name" = "8:CommentReflower2003.Connect"
+                                                            "Condition" = "8:"
+                                                            "AlwaysCreate" = "11:TRUE"
+                                                            "DeleteAtUninstall" = "11:FALSE"
+                                                            "Transitive" = "11:FALSE"
+                                                                "Keys"
+                                                                {
+                                                                }
+                                                                "Values"
+                                                                {
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_237C227B05DE40DBBF2B3171C6E229E5"
+                                                                    {
+                                                                    "Name" = "8:CommandLineSafe"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:3"
+                                                                    "Value" = "3:0"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_3D5749B2D20346FCA27823712E1F6079"
+                                                                    {
+                                                                    "Name" = "8:Description"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:Utility for reflowing text in comment blocks"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_81957145429B4CED95B50EBD1815836A"
+                                                                    {
+                                                                    "Name" = "8:AboutBoxIcon"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:4"
+                                                                    "Value" = "8:0000010002002020100000000000E8020000260000001010100000000000280100000E0300002800000020000000400000000100040000000000800200000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ABA00000000000000000000000000000BAB00000000000000000000000000000ABA00000000000000000000000F00000BAB00000000000008888888888F0ABABABABABA0000000008F77777777F0BABABABABAB0000000008F77777777F0ABABABABABA0000000008F77777777F00000BAB00000000000008F77777777FFFFF0ABA00000008880008F777777777777F0BAB00000887788008F777777777777F0ABA000008FF770778F777777777777F0000000008FFF78088F777777777777FFFFFF000008FF70008F7777777777777777800000008880008F7777777777777777800000000000008F7777777777777777800000000000008F7777777777777777800000000000008F7777777777777777800000000000008FFFFFFFFFFFFFFFFF800000000000008888888888888888888000000000000000000870000008700000000000000000000008F0000008F000000000000000000000008000000080000000000000000000000808000008080000000000000000000877788008777880000000000000000008FF778008FF7780000000000000000008FFF78008FFF7800000000000000000008FF700008FF7000000000000000000000777000007770000000000000000000000000000000000000000FFFFFFFFFFFFFE0FFFFFFE0FFFFFFE0FFFFFFE0FFF000000FF000000FF000000FF000000FF000000C700000F8300000F0000000F0000000F0000000F8300000FC700000FFF00000FFF00000FFF00000FFF00000FFF00000FFFF8F8FFFFF8F8FFFFF8F8FFFFF0707FFFE0203FFFE0203FFFE0203FFFF0707FFFF8F8FFFFFFFFFF2800000010000000200000000100040000000000C00000000000000000000000000000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0000000000000000000000000000000000000000000000A000000000000000B00000000000F0ABABA000008F88F000B00000008F77FFF0A00070708F7777F000000F008F7777FFFF0070708F777777800000008FFFFFFF800000008888888880000000000000000000000000070700000000000000F00000000000000707000000FFFF0000FFE30000FFE30000FF800000F0000000F0000000F0030000100300000003000010030000F0030000F0030000FF7F0000FE3F0000FE3F0000FE3F0000"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_82F1FC004CB2483085F995821FDDDF59"
+                                                                    {
+                                                                    "Name" = "8:AboutBoxDetails"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:For support see the web page at: http://commentreflower.sourceforge.net/"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_A92E225C96B34A5F88F9DA4D73D3A0E9"
+                                                                    {
+                                                                    "Name" = "8:SatelliteDllName"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:CommentReflowerResourceDll.dll"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_AAFBB8036820464093BC4397C818036E"
+                                                                    {
+                                                                    "Name" = "8:CommandPreload"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:3"
+                                                                    "Value" = "3:1"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_AD5B21388286460090D41CDD572F4EAB"
+                                                                    {
+                                                                    "Name" = "8:SatelliteDllPath"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:[TARGETDIR]"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_C641EE66FC53431FA21934DBFB197134"
+                                                                    {
+                                                                    "Name" = "8:FriendlyName"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:Comment Reflower"
+                                                                    }
+                                                                    "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_F9257F88DF554D9486E6FFC6CC83FB26"
                                                                     {
                                                                     "Name" = "8:LoadBehavior"
                                                                     "Condition" = "8:"
@@ -837,7 +917,7 @@
             {
                 "Keys"
                 {
-                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_5957B83BE77943B08C775FDFB65210C4"
+                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_5957B83BE77943B08C775FDFB65210C4"
                     {
                     "Name" = "8:Software"
                     "Condition" = "8:"
@@ -846,7 +926,7 @@
                     "Transitive" = "11:FALSE"
                         "Keys"
                         {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_DA237C845AEB4906B416DBC5EBC697AE"
+                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_DA237C845AEB4906B416DBC5EBC697AE"
                             {
                             "Name" = "8:Microsoft"
                             "Condition" = "8:"
@@ -855,7 +935,7 @@
                             "Transitive" = "11:FALSE"
                                 "Keys"
                                 {
-                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_0C97128C5AFB4E69929444266A9ABBF0"
+                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_0C97128C5AFB4E69929444266A9ABBF0"
                                     {
                                     "Name" = "8:VisualStudio"
                                     "Condition" = "8:"
@@ -864,16 +944,16 @@
                                     "Transitive" = "11:FALSE"
                                         "Keys"
                                         {
-                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_C2C21A349F7E434CA4835C9050B25C10"
+                                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_C2C21A349F7E434CA4835C9050B25C10"
                                             {
-                                            "Name" = "8:8.0"
+                                            "Name" = "8:7.1"
                                             "Condition" = "8:"
                                             "AlwaysCreate" = "11:FALSE"
                                             "DeleteAtUninstall" = "11:FALSE"
                                             "Transitive" = "11:FALSE"
                                                 "Keys"
                                                 {
-                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_9955880795C0497093AAB690560575BC"
+                                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_9955880795C0497093AAB690560575BC"
                                                     {
                                                     "Name" = "8:PreloadAddinState"
                                                     "Condition" = "8:"
@@ -885,9 +965,59 @@
                                                         }
                                                         "Values"
                                                         {
-                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_9FDD93BA853D44E39649D127BF6F0543"
+                                                            "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_9FDD93BA853D44E39649D127BF6F0543"
                                                             {
-                                                            "Name" = "8:CommentReflower2005.Connect"
+                                                            "Name" = "8:CommentReflower2003.Connect"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "ValueTypes" = "3:3"
+                                                            "Value" = "3:1"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
+                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_13BCA9F9ADCB4A2989BE1509EF5EA5D0"
+                                    {
+                                    "Name" = "8:VSA"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_24CEFB24CF2244989CE697049B0B9F28"
+                                            {
+                                            "Name" = "8:7.1"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_B47088542CD44DEF9FD627670AA27E67"
+                                                    {
+                                                    "Name" = "8:PreloadAddinState"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                        }
+                                                        "Values"
+                                                        {
+                                                            "{35AE352C-BC79-4EF9-ABD8-61F467188583}:_665D775128A94A47A502B2460AE7DB6E"
+                                                            {
+                                                            "Name" = "8:CommentReflower2003.Connect"
                                                             "Condition" = "8:"
                                                             "Transitive" = "11:FALSE"
                                                             "ValueTypes" = "3:3"
@@ -944,14 +1074,14 @@
         }
         "UserInterface"
         {
-            "{DF760B10-853B-4699-99F2-AFF7185B4A62}:_1D901D6F2EAA448AB43D75CB9DF2D76C"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_1D901D6F2EAA448AB43D75CB9DF2D76C"
             {
             "Name" = "8:#1901"
             "Sequence" = "3:2"
             "Attributes" = "3:2"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_602377CD038F4EBD9F40D86792B0EC9A"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_602377CD038F4EBD9F40D86792B0EC9A"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Progress"
@@ -988,14 +1118,14 @@
                     }
                 }
             }
-            "{DF760B10-853B-4699-99F2-AFF7185B4A62}:_428089C76199454289685B13DDCAC486"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_428089C76199454289685B13DDCAC486"
             {
             "Name" = "8:#1900"
             "Sequence" = "3:2"
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_038535E8E3B04D0B8AF404411C66F166"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_038535E8E3B04D0B8AF404411C66F166"
                     {
                     "Sequence" = "3:300"
                     "DisplayName" = "8:Confirm Installation"
@@ -1017,7 +1147,7 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_08E81F4DB4B8460BB6F9D6B4C18B335E"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_08E81F4DB4B8460BB6F9D6B4C18B335E"
                     {
                     "Sequence" = "3:200"
                     "DisplayName" = "8:Installation Folder"
@@ -1039,7 +1169,7 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_3728667056C64F2AAD600B51CBF192DB"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_3728667056C64F2AAD600B51CBF192DB"
                     {
                     "Sequence" = "3:110"
                     "DisplayName" = "8:License Agreement"
@@ -1086,7 +1216,7 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E501D23085B34737ADC984DC757D0460"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_E501D23085B34737ADC984DC757D0460"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Welcome"
@@ -1136,14 +1266,14 @@
                     }
                 }
             }
-            "{DF760B10-853B-4699-99F2-AFF7185B4A62}:_49156E9C542244D6B68072E4182C6FD5"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_49156E9C542244D6B68072E4182C6FD5"
             {
             "Name" = "8:#1902"
             "Sequence" = "3:2"
             "Attributes" = "3:3"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_29DAFCFDA9E7456BA496924D4905F11F"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_29DAFCFDA9E7456BA496924D4905F11F"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Read Me"
@@ -1190,7 +1320,7 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_FC9717DC8BAD4A129A6AC64EE86C62A1"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_FC9717DC8BAD4A129A6AC64EE86C62A1"
                     {
                     "Sequence" = "3:110"
                     "DisplayName" = "8:Finished"
@@ -1214,14 +1344,14 @@
                     }
                 }
             }
-            "{DF760B10-853B-4699-99F2-AFF7185B4A62}:_64E2CC3DA31D408488C306CFD9CC4746"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_64E2CC3DA31D408488C306CFD9CC4746"
             {
             "Name" = "8:#1900"
             "Sequence" = "3:1"
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_56E305AC77D34B0DB437D4036C2F8D15"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_56E305AC77D34B0DB437D4036C2F8D15"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Welcome"
@@ -1269,7 +1399,7 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A564D7D8F70E4CE681826DB5A88D7911"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_A564D7D8F70E4CE681826DB5A88D7911"
                     {
                     "Sequence" = "3:110"
                     "DisplayName" = "8:License Agreement"
@@ -1316,7 +1446,7 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A8587E360F82490DB2C04B2A5464E556"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_A8587E360F82490DB2C04B2A5464E556"
                     {
                     "Sequence" = "3:200"
                     "DisplayName" = "8:Installation Folder"
@@ -1336,22 +1466,9 @@
                             "Setting" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
-                            "InstallAllUsersVisible"
-                            {
-                            "Name" = "8:InstallAllUsersVisible"
-                            "DisplayName" = "8:#1059"
-                            "Description" = "8:#1159"
-                            "Type" = "3:5"
-                            "ContextData" = "8:1;True=1;False=0"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:0"
-                            "Value" = "3:1"
-                            "DefaultValue" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_BB773E5E1E6E4524B6F7DA62E13DF15E"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_BB773E5E1E6E4524B6F7DA62E13DF15E"
                     {
                     "Sequence" = "3:300"
                     "DisplayName" = "8:Confirm Installation"
@@ -1375,20 +1492,20 @@
                     }
                 }
             }
-            "{2479F3F5-0309-486D-8047-8187E2CE5BA0}:_8398D1743759482BA272A160B13543F2"
+            "{B654A020-6903-4E6A-A86C-75DC463DB54B}:_8398D1743759482BA272A160B13543F2"
             {
             "UseDynamicProperties" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "SourcePath" = "8:<VsdDialogDir>\\VsdBasicDialogs.wim"
             }
-            "{DF760B10-853B-4699-99F2-AFF7185B4A62}:_8C9FDEDA10C641DC92201EB9F621A158"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_8C9FDEDA10C641DC92201EB9F621A158"
             {
             "Name" = "8:#1902"
             "Sequence" = "3:1"
             "Attributes" = "3:3"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_7FAB57560F5A4EF1801A1B63942A13FB"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_7FAB57560F5A4EF1801A1B63942A13FB"
                     {
                     "Sequence" = "3:110"
                     "DisplayName" = "8:Finished"
@@ -1423,7 +1540,7 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9CBE3039816F4DA987ED986FC6A261D8"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_9CBE3039816F4DA987ED986FC6A261D8"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Read Me"
@@ -1472,14 +1589,14 @@
                     }
                 }
             }
-            "{DF760B10-853B-4699-99F2-AFF7185B4A62}:_9CFAE0809E2B485E899F161D262A7462"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_9CFAE0809E2B485E899F161D262A7462"
             {
             "Name" = "8:#1901"
             "Sequence" = "3:1"
             "Attributes" = "3:2"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F0E815BB8AD447A6AADB6FE216E1E583"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_F0E815BB8AD447A6AADB6FE216E1E583"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Progress"
@@ -1516,7 +1633,7 @@
                     }
                 }
             }
-            "{2479F3F5-0309-486D-8047-8187E2CE5BA0}:_B1D8700A720D472AAA899DB5BE678D0C"
+            "{B654A020-6903-4E6A-A86C-75DC463DB54B}:_B1D8700A720D472AAA899DB5BE678D0C"
             {
             "UseDynamicProperties" = "11:FALSE"
             "IsDependency" = "11:FALSE"
@@ -1525,12 +1642,26 @@
         }
         "MergeModule"
         {
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_F1D15D42BCC64975826648ADC3FE37AC"
+            {
+            "UseDynamicProperties" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "SourcePath" = "8:dotnetfxredist_x86.msm"
+                "Properties"
+                {
+                }
+            "LanguageId" = "3:1033"
+            "Exclude" = "11:TRUE"
+            "Folder" = "8:"
+            "Feature" = "8:"
+            "IsolateTo" = "8:"
+            }
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ED0142982C364444A18B517B3CB12988"
+            "{8062640A-2EEE-46E9-AB67-688E9A886E9F}:_ED0142982C364444A18B517B3CB12988"
             {
-            "SourcePath" = "8:..\\CommentReflower\\obj\\Debug\\CommentReflower2005.dll"
+            "SourcePath" = "8:..\\CommentReflower\\obj\\Debug\\CommentReflower2003.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1FA957DCEE7045F2BC0E31A3D0DA4AF1"

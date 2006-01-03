@@ -1,60 +1,60 @@
-<VisualStudioProject>
-    <CSHARP LastOpenVersion = "7.10.3077" >
-        <Build>
-            <Settings ReferencePath = "" >
-                <Config
-                    Name = "Debug"
-                    EnableASPDebugging = "false"
-                    EnableASPXDebugging = "false"
-                    EnableUnmanagedDebugging = "false"
-                    EnableSQLServerDebugging = "false"
-                    RemoteDebugEnabled = "false"
-                    RemoteDebugMachine = ""
-                    StartAction = "Program"
-                    StartArguments = ""
-                    StartPage = ""
-                    StartProgram = "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\devenv.exe"
-                    StartURL = ""
-                    StartWorkingDirectory = "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\"
-                    StartWithIE = "false"
-                >
-                    <InteropRegistration
-                        RegisteredComClassic = "true"
-                        RegisteredOutput = "CommentReflower2003.dll"
-                        RegisteredTypeLib = "CommentReflower2003.tlb"
-                    />
-                </Config>
-                <Config
-                    Name = "Release"
-                    EnableASPDebugging = "false"
-                    EnableASPXDebugging = "false"
-                    EnableUnmanagedDebugging = "false"
-                    EnableSQLServerDebugging = "false"
-                    RemoteDebugEnabled = "false"
-                    RemoteDebugMachine = ""
-                    StartAction = "Program"
-                    StartArguments = ""
-                    StartPage = ""
-                    StartProgram = "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\devenv.exe"
-                    StartURL = ""
-                    StartWorkingDirectory = "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\"
-                    StartWithIE = "false"
-                >
-                    <InteropRegistration
-                        RegisteredComClassic = "true"
-                        RegisteredOutput = "CommentReflower.dll"
-                        RegisteredTypeLib = "CommentReflower.tlb"
-                    />
-                </Config>
-            </Settings>
-        </Build>
-        <OtherProjectSettings
-            CopyProjectDestinationFolder = ""
-            CopyProjectUncPath = ""
-            CopyProjectOption = "0"
-            ProjectView = "ProjectFiles"
-            ProjectTrust = "0"
-        />
-    </CSHARP>
-</VisualStudioProject>
-
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastOpenVersion>7.10.3077</LastOpenVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ReferencePath>
+    </ReferencePath>
+    <CopyProjectDestinationFolder>
+    </CopyProjectDestinationFolder>
+    <CopyProjectUncPath>
+    </CopyProjectUncPath>
+    <CopyProjectOption>0</CopyProjectOption>
+    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectTrust>0</ProjectTrust>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <EnableASPDebugging>false</EnableASPDebugging>
+    <EnableASPXDebugging>false</EnableASPXDebugging>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <EnableSQLServerDebugging>false</EnableSQLServerDebugging>
+    <RemoteDebugEnabled>false</RemoteDebugEnabled>
+    <RemoteDebugMachine>
+    </RemoteDebugMachine>
+    <StartAction>Program</StartAction>
+    <StartArguments>
+    </StartArguments>
+    <StartPage>
+    </StartPage>
+    <StartProgram>C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\devenv.exe</StartProgram>
+    <StartURL>
+    </StartURL>
+    <StartWorkingDirectory>C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\</StartWorkingDirectory>
+    <StartWithIE>false</StartWithIE>
+    <RegisteredComClassic>true</RegisteredComClassic>
+    <RegisteredOutput>CommentReflower2003.dll</RegisteredOutput>
+    <RegisteredTypeLib>CommentReflower2003.tlb</RegisteredTypeLib>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <EnableASPDebugging>false</EnableASPDebugging>
+    <EnableASPXDebugging>false</EnableASPXDebugging>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <EnableSQLServerDebugging>false</EnableSQLServerDebugging>
+    <RemoteDebugEnabled>false</RemoteDebugEnabled>
+    <RemoteDebugMachine>
+    </RemoteDebugMachine>
+    <StartAction>Program</StartAction>
+    <StartArguments>
+    </StartArguments>
+    <StartPage>
+    </StartPage>
+    <StartProgram>C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\devenv.exe</StartProgram>
+    <StartURL>
+    </StartURL>
+    <StartWorkingDirectory>C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\</StartWorkingDirectory>
+    <StartWithIE>false</StartWithIE>
+    <RegisteredComClassic>true</RegisteredComClassic>
+    <RegisteredOutput>CommentReflower.dll</RegisteredOutput>
+    <RegisteredTypeLib>CommentReflower.tlb</RegisteredTypeLib>
+  </PropertyGroup>
+</Project>

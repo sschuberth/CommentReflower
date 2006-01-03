@@ -1,0 +1,269 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{8DA7DD2D-784D-421A-922D-63B0AC3867A0}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = "App.ico"
+                AssemblyKeyContainerName = ""
+                AssemblyName = "CommentReflowerTest"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Exe"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "CommentReflowerTest"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE;ISVS2003"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug2003\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE;ISVS2003"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release2003\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "CommentReflowerLib"
+                    Project = "{8A754D5F-6005-4CD5-907F-D66B131CB387}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "envdte"
+                    AssemblyName = "EnvDTE"
+                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\envdte.dll"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "App.ico"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "MainClass.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TestFileWrapper.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TestTextPoint.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Compare\Regression.compare.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Compare\Regression.compare.JAM"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Compare\Regression.compare.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Compare\Regression.compare.vb"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Compare\RegressionBlankLines.compare.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Compare\RegressionBreakFlowStrings.compare.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Compare\RegressionBullets.compare.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\AlignerTest.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\ExampleFile.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\Regression.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\Regression.JAM"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Input\Regression.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\Regression.vb"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\RegressionBlankLines.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\RegressionBreakFlowStrings.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Input\RegressionBullets.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.iout2.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.iout2.JAM"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Output\Regression.iout2.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.iout2.vb"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.out.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.out.JAM"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Output\Regression.out.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.out.vb"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.out2.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\Regression.out3.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBlankLines.iout2.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBlankLines.out.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBlankLines.out2.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBreakFlowStrings.iout2.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBreakFlowStrings.out.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBreakFlowStrings.out2.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBullets.iout2.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBullets.out.cpp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Output\RegressionBullets.out2.cpp"
+                    BuildAction = "Content"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

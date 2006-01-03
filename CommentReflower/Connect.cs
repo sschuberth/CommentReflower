@@ -1,23 +1,28 @@
 // Comment Reflower Main plugin Connect class
 // Copyright (C) 2004  Ian Nowland
 // 
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation; either version 2
-// of the License, or (at your option) any later version.
+// This program is free software; you can redistribute it and/or modify it under
+// the terms of the GNU General Public License as published by the Free Software
+// Foundation; either version 2 of the License, or (at your option) any later
+// version.
 // 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// This program is distributed in the hope that it will be useful, but WITHOUT
+// ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 // 
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
+// You should have received a copy of the GNU General Public License along with
+// this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
 using System;
+#if ISVS2003
 using Microsoft.Office.Core;
+#else
+using EnvDTE80;
+using Microsoft.VisualStudio.CommandBars;
+#endif
 using Extensibility;
 using System.Runtime.InteropServices;
 using EnvDTE;
@@ -31,9 +36,18 @@ namespace CommentReflower
     ///   The object for implementing the Add-in.
     /// </summary>
     /// <seealso class='IDTExtensibility2' />
-    [GuidAttribute("D1432269-9ED2-4506-89FA-87E6E005134A"), ProgId("CommentReflower.Connect")]
+#if ISVS2003
+    [GuidAttribute("EDD01A03-A4A1-4a52-A820-66BCF1E6D2E2"), ProgId("CommentReflower2003.Connect")]
+#else
+    [GuidAttribute("D1432269-9ED2-4506-89FA-87E6E005134A"), ProgId("CommentReflower2005.Connect")]
+#endif
     public class Connect : Object, Extensibility.IDTExtensibility2, IDTCommandTarget
     {
+#if ISVS2003
+        private const string mProgId = "CommentReflower2003.Connect";
+#else
+        private const string mProgId = "CommentReflower2005.Connect";
+#endif
         /// <summary>
         ///     Implements the constructor for the Add-in object.
         ///     Place your initialization code within this method.
@@ -76,18 +90,28 @@ namespace CommentReflower
             if(connectMode == Extensibility.ext_ConnectMode.ext_cm_UISetup)
             {
                 object []contextGUIDS = new object[] { };
+#if ISVS2003
                 Commands commands = mApplicationObject.Commands;
                 _CommandBars commandBars = mApplicationObject.CommandBars;
+#else
+                Commands2 commands = (Commands2)mApplicationObject.Commands;
+                _CommandBars commandBars = (_CommandBars)mApplicationObject.CommandBars;
+#endif
 
-                // When run, the Add-in wizard prepared the registry for the Add-in.
-                // At a later time, the Add-in or its commands may become unavailable for reasons such as:
-                //   1) You moved this project to a computer other than which is was originally created on.
-                //   2) You chose 'Yes' when presented with a message asking if you wish to remove the Add-in.
+                // When run, the Add-in wizard prepared the registry for the
+                // Add-in. At a later time, the Add-in or its commands may
+                // become unavailable for reasons such as:
+                //   1) You moved this project to a computer other than which is
+                //      was originally created on.
+                //   2) You chose 'Yes' when presented with a message asking if
+                //      you wish to remove the Add-in.
                 //   3) You add new commands or modify commands already defined.
-                // You will need to re-register the Add-in by building the CommentReflowerSetup project,
-                // right-clicking the project in the Solution Explorer, and then choosing install.
-                // Alternatively, you could execute the ReCreateCommands.reg file the Add-in Wizard generated in
-                // the project directory, or run 'devenv /setup' from a command prompt.
+                // You will need to re-register the Add-in by building the
+                // CommentReflowerSetup project, right-clicking the project in
+                // the Solution Explorer, and then choosing install.
+                // Alternatively, you could execute the ReCreateCommands.reg
+                // file the Add-in Wizard generated in the project directory, or
+                // run 'devenv /setup' from a command prompt.
                 try
                 {
                     //create command objects
@@ -113,7 +137,7 @@ namespace CommentReflower
                         {
                             if (i == 0)
                             {
-                                commands.Item("CommentReflower.Connect.PointCommentReflower",-1).Delete();
+                                commands.Item(mProgId + ".PointCommentReflower",-1).Delete();
                             }
                             else
                             {
@@ -140,7 +164,7 @@ namespace CommentReflower
                         {
                             if (i==0)
                             {
-                                commands.Item("CommentReflower.Connect.SelectionCommentReflower",-1).Delete();
+                                commands.Item(mProgId + ".SelectionCommentReflower",-1).Delete();
                             }
                             else
                             {
@@ -166,7 +190,7 @@ namespace CommentReflower
                         {
                             if (i==0)
                             {
-                                commands.Item("CommentReflower.Connect.CommentReflowerSettings",-1).Delete();
+                                commands.Item(mProgId + ".CommentReflowerSettings",-1).Delete();
                             }
                             else
                             {
@@ -177,8 +201,11 @@ namespace CommentReflower
 
                     reflowSettingsCommand.AddControl(commandBars["Tools"],1);
                     reflowSelectionCommand.AddControl(commandBars["Tools"],1);
+#if ISVS2003
                     reflowPointCommand.AddControl(commandBars["Tools"],1).BeginGroup = true;
-
+#else
+                    ((CommandBarControl)reflowPointCommand.AddControl(((_CommandBars)mApplicationObject.CommandBars)["Tools"], 1)).BeginGroup = true;
+#endif
                     reflowSelectionCommand.AddControl(commandBars["Code Window"],1);
                     reflowPointCommand.AddControl(commandBars["Code Window"],1);
                 }
@@ -190,8 +217,9 @@ namespace CommentReflower
         }
 
         /// <summary>
-        ///     Implements the OnDisconnection method of the IDTExtensibility2 interface.
-        ///     Receives notification that the Add-in is being unloaded.
+        ///     Implements the OnDisconnection method of the IDTExtensibility2
+        ///     interface. Receives notification that the Add-in is being
+        ///     unloaded.
         /// </summary>
         /// <param term='disconnectMode'>
         ///      Describes how the Add-in is being unloaded.
@@ -205,8 +233,9 @@ namespace CommentReflower
         }
 
         /// <summary>
-        ///      Implements the OnAddInsUpdate method of the IDTExtensibility2 interface.
-        ///      Receives notification that the collection of Add-ins has changed.
+        ///      Implements the OnAddInsUpdate method of the IDTExtensibility2
+        ///      interface. Receives notification that the collection of Add-ins
+        ///      has changed.
         /// </summary>
         /// <param term='custom'>
         ///      Array of parameters that are host application specific.
@@ -217,8 +246,9 @@ namespace CommentReflower
         }
 
         /// <summary>
-        ///      Implements the OnStartupComplete method of the IDTExtensibility2 interface.
-        ///      Receives notification that the host application has completed loading.
+        ///      Implements the OnStartupComplete method of the
+        ///      IDTExtensibility2 interface. Receives notification that the
+        ///      host application has completed loading.
         /// </summary>
         /// <param term='custom'>
         ///      Array of parameters that are host application specific.
@@ -229,8 +259,9 @@ namespace CommentReflower
         }
 
         /// <summary>
-        ///      Implements the OnBeginShutdown method of the IDTExtensibility2 interface.
-        ///      Receives notification that the host application is being unloaded.
+        ///      Implements the OnBeginShutdown method of the IDTExtensibility2
+        ///      interface. Receives notification that the host application is
+        ///      being unloaded.
         /// </summary>
         /// <param term='custom'>
         ///      Array of parameters that are host application specific.
@@ -241,8 +272,9 @@ namespace CommentReflower
         }
 
         /// <summary>
-        ///      Implements the QueryStatus method of the IDTCommandTarget interface.
-        ///      This is called when the command's availability is updated
+        ///      Implements the QueryStatus method of the IDTCommandTarget
+        ///      interface. This is called when the command's availability is
+        ///      updated
         /// </summary>
         /// <param term='commandName'>
         ///     The name of the command to determine state for.
@@ -265,7 +297,7 @@ namespace CommentReflower
         {
             if(neededText == EnvDTE.vsCommandStatusTextWanted.vsCommandStatusTextWantedNone)
             {
-                if(commandName == "CommentReflower.Connect.PointCommentReflower")
+                if(commandName == mProgId + ".PointCommentReflower")
                 {
                     if ((mApplicationObject.ActiveDocument == null) ||
                         (mParams.getBlocksForFileName(mApplicationObject.ActiveDocument.Name).Count == 0))
@@ -278,7 +310,7 @@ namespace CommentReflower
                                                   vsCommandStatus.vsCommandStatusEnabled;
                     }
                 }
-                else if(commandName == "CommentReflower.Connect.SelectionCommentReflower")
+                else if(commandName == mProgId + ".SelectionCommentReflower")
                 {
                     if ((mApplicationObject.ActiveDocument == null) ||
                         (mParams.getBlocksForFileName(mApplicationObject.ActiveDocument.Name).Count == 0))
@@ -298,11 +330,11 @@ namespace CommentReflower
                         }
                     }
                 }
-                else if(commandName == "CommentReflower.Connect.CommentReflowerSettings")
+                else if(commandName == mProgId + ".CommentReflowerSettings")
                 {
                     status = (vsCommandStatus)vsCommandStatus.vsCommandStatusSupported | vsCommandStatus.vsCommandStatusEnabled;
                 }
-                else if(commandName == "CommentReflower.Connect.ParameterAligner")
+                else if(commandName == mProgId + ".ParameterAligner")
                 {
                     if ((mApplicationObject.ActiveDocument == null) ||
                         (mParams.getBlocksForFileName(mApplicationObject.ActiveDocument.Name).Count == 0))
@@ -348,7 +380,7 @@ namespace CommentReflower
             handled = false;
             if(executeOption == EnvDTE.vsCommandExecOption.vsCommandExecOptionDoDefault)
             {
-                if(commandName == "CommentReflower.Connect.PointCommentReflower")
+                if(commandName == mProgId + ".PointCommentReflower")
                 {
                     handled = true;
                     TextSelection sel = (TextSelection)mApplicationObject.ActiveDocument.Selection;
@@ -373,7 +405,7 @@ namespace CommentReflower
                     }
                     return;
                 }
-                else if(commandName == "CommentReflower.Connect.SelectionCommentReflower")
+                else if(commandName == mProgId + ".SelectionCommentReflower")
                 {
                     handled = true;
                     TextSelection sel = (TextSelection)mApplicationObject.ActiveDocument.Selection;
@@ -398,7 +430,7 @@ namespace CommentReflower
                     }
                     return;
                 }
-                else if(commandName == "CommentReflower.Connect.CommentReflowerSettings")
+                else if(commandName == mProgId + ".CommentReflowerSettings")
                 {
                     handled = true;
                     CommentReflowerSetup setup = new CommentReflowerSetup(mParams,
@@ -412,7 +444,7 @@ namespace CommentReflower
                     setup.Dispose();
                     return;
                 }
-                else if(commandName == "CommentReflower.Connect.ParameterAligner")
+                else if(commandName == mProgId + ".ParameterAligner")
                 {
                     TextSelection sel = (TextSelection)mApplicationObject.ActiveDocument.Selection;
                     sel.DTE.UndoContext.Open("Reflowing comments in selection",false);
