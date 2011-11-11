@@ -313,6 +313,9 @@ namespace CommentReflowerTest
                 DoSimpleSingleFileTest("Jamfile","Regression",".JAM");
                 DoSimpleSingleFileTest("Text file","Regression",".txt");
                 DoXmlFileTests();
+
+                Console.WriteLine("\nPress any key to end this program...");
+                Console.ReadKey();
             }
             catch (Exception e)
             {

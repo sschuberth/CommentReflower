@@ -1,12 +1,14 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8DA7DD2D-784D-421A-922D-63B0AC3867A0}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>App.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>CommentReflowerTest</AssemblyName>
@@ -25,6 +27,24 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -95,7 +115,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.ico" />
     <Content Include="Compare\Regression.compare.cpp" />
     <Content Include="Compare\Regression.compare.txt" />
     <Content Include="Compare\Regression.compare.vb" />
@@ -110,23 +129,6 @@
     <Content Include="Input\RegressionBlankLines.cpp" />
     <Content Include="Input\RegressionBreakFlowStrings.cpp" />
     <Content Include="Input\RegressionBullets.cpp" />
-    <Content Include="Output\Regression.iout2.cpp" />
-    <Content Include="Output\Regression.iout2.txt" />
-    <Content Include="Output\Regression.iout2.vb" />
-    <Content Include="Output\Regression.out.cpp" />
-    <Content Include="Output\Regression.out.txt" />
-    <Content Include="Output\Regression.out.vb" />
-    <Content Include="Output\Regression.out2.cpp" />
-    <Content Include="Output\Regression.out3.cpp" />
-    <Content Include="Output\RegressionBlankLines.iout2.cpp" />
-    <Content Include="Output\RegressionBlankLines.out.cpp" />
-    <Content Include="Output\RegressionBlankLines.out2.cpp" />
-    <Content Include="Output\RegressionBreakFlowStrings.iout2.cpp" />
-    <Content Include="Output\RegressionBreakFlowStrings.out.cpp" />
-    <Content Include="Output\RegressionBreakFlowStrings.out2.cpp" />
-    <Content Include="Output\RegressionBullets.iout2.cpp" />
-    <Content Include="Output\RegressionBullets.out.cpp" />
-    <Content Include="Output\RegressionBullets.out2.cpp" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -139,10 +141,26 @@
     <Compile Include="TestTextPoint.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="app.config" />
     <None Include="Compare\Regression.compare.JAM" />
     <None Include="Input\Regression.JAM" />
-    <None Include="Output\Regression.iout2.JAM" />
-    <None Include="Output\Regression.out.JAM" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

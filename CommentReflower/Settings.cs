@@ -1,5 +1,6 @@
-// Comment Reflower Setting Dialog
+// Comment Reflower Settings Dialog
 // Copyright (C) 2004  Ian Nowland
+// Ported to Visual Studio 2010 by Christoph Nahr
 // 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -17,28 +18,25 @@
 
 using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Globalization;
+using System.IO;
 using System.Security.Permissions;
-using Microsoft.Win32;
-using CommentReflowerLib;
+using System.Windows.Forms;
+
 using EnvDTE;
-#if ISVS2003
-using Microsoft.Office.Core;
-#else
 using EnvDTE80;
+using Extensibility;
+using Microsoft.Win32;
 using Microsoft.VisualStudio.CommandBars;
-#endif
 
+using CommentReflowerLib;
 
-namespace CommentReflower
-{
-    /// <summary>
-    /// Summary description for CommentReflowerSetup.
-    /// </summary>
-    class CommentReflowerSetup : System.Windows.Forms.Form
-    {
+namespace CommentReflower {
+
+    class Settings: Form {
+
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage GeneralTab;
         private System.Windows.Forms.TabPage BlocksTab;
@@ -89,9 +87,7 @@ namespace CommentReflower
         private System.Windows.Forms.CheckBox IsBlockLineStartRegExCheck;
         private System.Windows.Forms.CheckBox IsBlockEndRegExCheck;
         private System.Windows.Forms.CheckBox IsBlockStartRegExCheck;
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+
         private System.ComponentModel.Container components = null;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox FirstLineBlockCombo;
@@ -105,105 +101,73 @@ namespace CommentReflower
         private System.Windows.Forms.Button AlignBtn;
 
         /** the ParameterSet set by the dialog */
-        public ParameterSet mpset;
+        public ParameterSet _params;
+        private DTE2 _applicationObject;
+        private AddIn _addInInstance;
 
-        public CommentReflowerSetup(
-            ParameterSet pset,
-            _DTE applicationObject,
-            AddIn addInInstance)
-    {
-            mApplicationObject = applicationObject;
-            mAddInInstance = addInInstance;
-            //
-            // Required for Windows Form Designer support
-            //
+        public Settings(ParameterSet pset, DTE2 applicationObject, AddIn addInInstance) {
             InitializeComponent();
 
-            mpset = new ParameterSet(pset);
+            _applicationObject = applicationObject;
+            _addInInstance = addInInstance;
+            _params = new ParameterSet(pset);
 
-            UseTabsToIndentCheck.Checked = mpset.mUseTabsToIndent;
-            BlockWrapWidthText.Text = mpset.mWrapWidth.ToString();
-            BlockMinimumWidthText.Text = mpset.mMinimumBlockWidth.ToString();
+            UseTabsToIndentCheck.Checked = _params.mUseTabsToIndent;
+            BlockWrapWidthText.Text = _params.mWrapWidth.ToString();
+            BlockMinimumWidthText.Text = _params.mMinimumBlockWidth.ToString();
 
-            
-            foreach (CommentBlock cb in mpset.mCommentBlocks)
-            {
+            foreach (CommentBlock cb in _params.mCommentBlocks) {
                 BlockList.Items.Add(new ListViewItem(cb.mName));
-                if (!mAllFileAssociations.Contains(cb.getAssociationsAsString()))
-                {
-                    mAllFileAssociations.Add(cb.getAssociationsAsString());
-                }
+                if (!_allFileAssociations.Contains(cb.getAssociationsAsString()))
+                    _allFileAssociations.Add(cb.getAssociationsAsString());
             }
-            if (BlockList.Items.Count > 0)
-            {
+
+            if (BlockList.Items.Count > 0) {
                 selectBlockListItem(0);
                 updateItemsForBlock(0);
-            }
-            else
-            {
+            } else
                 updateItemsForBlock(-1);
-            }
-            foreach (string st in mAllFileAssociations)
-            {
-                BlockFileTypeCombo.Items.Add(st);
-            }
 
-            foreach (BulletPoint bp in mpset.mBulletPoints)
-            {
+            foreach (string st in _allFileAssociations)
+                BlockFileTypeCombo.Items.Add(st);
+
+            foreach (BulletPoint bp in _params.mBulletPoints)
                 BulletList.Items.Add(new ListViewItem(bp.mName));
-            }
-            if (BulletList.Items.Count > 0)
-            {
+
+            if (BulletList.Items.Count > 0) {
                 selectBulletListItem(0);
                 updateItemsForBullet(0);
-            }
-            else
-            {
+            } else
                 updateItemsForBullet(-1);
-            }
 
-            foreach (BreakFlowString lb in mpset.mBreakFlowStrings)
-            {
+            foreach (BreakFlowString lb in _params.mBreakFlowStrings)
                 BreakFlowStringList.Items.Add(new ListViewItem(lb.mName));
-            }
-            if (BreakFlowStringList.Items.Count > 0)
-            {
+
+            if (BreakFlowStringList.Items.Count > 0) {
                 selectBreakFlowStringListItem(0);
                 updateItemsForBreakFlowString(0);
-            }
-            else
-            {
+            } else
                 updateItemsForBreakFlowString(-1);
-            }
         }
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        protected override void Dispose( bool disposing )
-        {
-            if( disposing )
-            {
-                if(components != null)
-                {
-                    components.Dispose();
-                }
-            }
-            base.Dispose( disposing );
+        protected override void Dispose(bool disposing) {
+            if (disposing && components != null)
+                components.Dispose();
+
+            base.Dispose(disposing);
         }
 
-        private bool mFirstBlockListError = true;
-        private int mCurrentBlockListItemSelected = -1;
-        private int mIndexToSelectOnBlockListMouseUp = -1;
-        private bool mProgramaticallySettingSelectedBlock = false;
+        private bool _firstBlockListError = true;
+        private int _currentBlockListItemSelected = -1;
+        private int _indexToSelectOnBlockListMouseUp = -1;
+        private bool _programaticallySettingSelectedBlock = false;
 
-        private static StringCollection mAllFileAssociations = new StringCollection();
+        private static StringCollection _allFileAssociations = new StringCollection();
 
-        private void updateItemsForBlock(int index)
-        {
+        private void updateItemsForBlock(int index) {
             BlockNewButton.Enabled = true;
-            if (index == -1)
-            {
+
+            if (index == -1) {
                 BlockDeleteButton.Enabled = false;
                 BlockDownButton.Enabled = false;
                 BlockUpButton.Enabled = false;
@@ -233,97 +197,83 @@ namespace CommentReflower
                 BlockMinimumWidthText.Enabled = false;
                 BlockMinimumWidthText.Text = "";
             }
-            else
-            {
+            else {
                 BlockDeleteButton.Enabled = true;
                 BlockUpButton.Enabled = (index > 0);
                 BlockDownButton.Enabled = (index < (BlockList.Items.Count-1));
 
-                CommentBlock cb = (CommentBlock)mpset.mCommentBlocks[index];
+                CommentBlock cb = (CommentBlock)_params.mCommentBlocks[index];
 
                 BlockFileTypeCombo.Enabled = true;
                 BlockFileTypeCombo.Text = cb.getAssociationsAsString();
 
                 BlockStartTypeCombo.Enabled = true;
                 BlockStartTypeCombo.SelectedIndex = (int)cb.mBlockStartType;
-                if (BlockStartTypeCombo.SelectedIndex != 0)
-                {
+
+                if (BlockStartTypeCombo.SelectedIndex != 0) {
                     BlockStartText.Enabled = true;
                     BlockStartText.Text = convertToDisplay(cb.mBlockStart,cb.mIsBlockStartRegEx);
                     IsBlockStartRegExCheck.Enabled = true;
                     IsBlockStartRegExCheck.Checked = cb.mIsBlockStartRegEx;
                 }
-                else
-                {
+                else {
                     BlockStartText.Enabled = false;
                     BlockStartText.Text = "";
                     IsBlockStartRegExCheck.Enabled = false;
                     IsBlockStartRegExCheck.Checked = false;
                 }
+
                 BlockEndTypeCombo.Enabled = true;
                 BlockEndTypeCombo.SelectedIndex = (int)cb.mBlockEndType;
-                if (BlockEndTypeCombo.SelectedIndex != 0)
-                {
+
+                if (BlockEndTypeCombo.SelectedIndex != 0) {
                     BlockEndText.Enabled = true;
                     BlockEndText.Text = convertToDisplay(cb.mBlockEnd,cb.mIsBlockEndRegEx);
                     IsBlockEndRegExCheck.Enabled = true;
                     IsBlockEndRegExCheck.Checked = cb.mIsBlockEndRegEx;
                 }
-                else
-                {
+                else {
                     BlockEndText.Enabled = false;
                     BlockEndText.Text = "";
                     IsBlockEndRegExCheck.Enabled = false;
                     IsBlockEndRegExCheck.Checked = false;
                 }
+
                 BlockLineStartText.Enabled = true;
                 BlockLineStartText.Text = convertToDisplay(cb.mLineStart,false);
                 IsBlockLineStartRegExCheck.Enabled = false;
                 IsBlockLineStartRegExCheck.Checked = false;
                 FirstLineBlockCombo.Enabled = true;
-                if (cb.mOnlyEmptyLineBeforeStartOfBlock)
-                {
-                    FirstLineBlockCombo.SelectedIndex = 0;
-                }
-                else
-                {
-                    FirstLineBlockCombo.SelectedIndex = 1;
-                }
-
+                FirstLineBlockCombo.SelectedIndex = (cb.mOnlyEmptyLineBeforeStartOfBlock ? 0 : 1);
             }
         }
 
-        private void selectBlockListItem(int index)
-        {
-            mCurrentBlockListItemSelected = index;
-            if (index != -1)
-            {
-                mProgramaticallySettingSelectedBlock = true;
+        private void selectBlockListItem(int index) {
+            _currentBlockListItemSelected = index;
+            if (index != -1) {
+                _programaticallySettingSelectedBlock = true;
                 BlockList.Items[index].Selected = true;
-                mProgramaticallySettingSelectedBlock = false;
+                _programaticallySettingSelectedBlock = false;
             }
         }
 
-        private bool validateSelectedBlock(bool printError)
-        {
-            int index = mCurrentBlockListItemSelected;
-            if (index != -1)
-            {
-                CommentBlock cb = (CommentBlock)mpset.mCommentBlocks[index];
-                try
-                {
-                    cb.mName = BlockList.Items[index].Text;
+        private bool validateSelectedBlock(bool printError) {
+            int index = _currentBlockListItemSelected;
 
+            if (index != -1) {
+                CommentBlock cb = (CommentBlock)_params.mCommentBlocks[index];
+                try {
+                    cb.mName = BlockList.Items[index].Text;
                     cb.mFileAssociations = CommentBlock.createFileAssocFromString(BlockFileTypeCombo.Text);
-                    if (!mAllFileAssociations.Contains(cb.getAssociationsAsString()))
-                    {
-                        mAllFileAssociations.Add(cb.getAssociationsAsString());
+
+                    if (!_allFileAssociations.Contains(cb.getAssociationsAsString())) {
+                        _allFileAssociations.Add(cb.getAssociationsAsString());
                         BlockFileTypeCombo.Items.Add(cb.getAssociationsAsString());
                     }
                     BlockFileTypeCombo.Text = cb.getAssociationsAsString();
 
-                    cb.mBlockStartType = (CommentReflowerLib.StartEndBlockType)BlockStartTypeCombo.SelectedIndex;
-                    cb.mBlockEndType = (CommentReflowerLib.StartEndBlockType)BlockEndTypeCombo.SelectedIndex;
+                    cb.mBlockStartType = (StartEndBlockType) BlockStartTypeCombo.SelectedIndex;
+                    cb.mBlockEndType = (StartEndBlockType) BlockEndTypeCombo.SelectedIndex;
 
                     cb.mIsBlockStartRegEx = IsBlockStartRegExCheck.Checked;
                     cb.mIsBlockEndRegEx = IsBlockEndRegExCheck.Checked;
@@ -336,30 +286,27 @@ namespace CommentReflower
                     BlockStartTypeCombo.Text = "";
                     BlockEndTypeCombo.Text = "";
 
-                    mpset.validateCommentBlock(index);
+                    _params.validateCommentBlock(index);
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     if (printError)
-                    {
-                        MessageBox.Show("Error detected validating Block - " + e.Message);
-                    }
+                        MessageBox.Show("Block validation error:\n" + e.Message, "Comment Reflower Error");
                     return false;
                 }
             }
+
             return true;
         }
 
-        private bool mFirstBulletListError = true;
-        private int mCurrentBulletListItemSelected = -1;
-        private int mIndexToSelectOnBulletListMouseUp = -1;
-        private bool mProgramaticallySettingSelectedBullet = false;
+        private bool _firstBulletListError = true;
+        private int _currentBulletListItemSelected = -1;
+        private int _indexToSelectOnBulletListMouseUp = -1;
+        private bool _programaticallySettingSelectedBullet = false;
 
-        private void updateItemsForBullet(int index)
-        {
+        private void updateItemsForBullet(int index) {
             BulletNewButton.Enabled = true;
-            if (index == -1)
-            {
+
+            if (index == -1) {
                 BulletDeleteButton.Enabled = false;
                 BulletDownButton.Enabled = false;
                 BulletUpButton.Enabled = false;
@@ -371,78 +318,63 @@ namespace CommentReflower
                 BulletEdgeCombo.Text = "";
                 BulletEdgeCombo.Enabled = false;
             }
-            else
-            {
+            else {
                 BulletDeleteButton.Enabled = true;
                 BulletUpButton.Enabled = (index > 0);
                 BulletDownButton.Enabled = (index < (BulletList.Items.Count-1));
 
-                BulletPoint bp = (BulletPoint)mpset.mBulletPoints[index];
-
+                BulletPoint bp = (BulletPoint)_params.mBulletPoints[index];
                 BulletStringText.Enabled = true;
                 BulletStringText.Text = convertToDisplay(bp.mString,bp.mIsRegEx);
                 BulletEdgeCombo.Enabled = true;
-                if (bp.mWrapIsAtRight)
-                {
-                    BulletEdgeCombo.Text = "Right";
-                }
-                else
-                {
-                    BulletEdgeCombo.Text = "Left";
-                }
+                BulletEdgeCombo.Text = (bp.mWrapIsAtRight ? "Right" : "Left");
 
                 BulletIsRegExCheck.Enabled = true;
                 BulletIsRegExCheck.Checked = bp.mIsRegEx;
             }
         }
 
-        private void selectBulletListItem(int index)
-        {
-            mCurrentBulletListItemSelected = index;
-            if (index != -1)
-            {
-                mProgramaticallySettingSelectedBullet = true;
+        private void selectBulletListItem(int index) {
+            _currentBulletListItemSelected = index;
+            if (index != -1) {
+                _programaticallySettingSelectedBullet = true;
                 BulletList.Items[index].Selected = true;
-                mProgramaticallySettingSelectedBullet = false;
+                _programaticallySettingSelectedBullet = false;
             }
         }
 
-        private bool validateSelectedBullet(bool printError)
-        {
-            int index = mCurrentBulletListItemSelected;
-            if (index != -1)
-            {
-                BulletPoint bp = (BulletPoint)mpset.mBulletPoints[index];
+        private bool validateSelectedBullet(bool printError) {
+            int index = _currentBulletListItemSelected;
+
+            if (index != -1) {
+                BulletPoint bp = (BulletPoint)_params.mBulletPoints[index];
                 bp.mName = BulletList.Items[index].Text;
                 bp.mIsRegEx = BulletIsRegExCheck.Checked;
                 bp.mString = convertFromDisplay(BulletStringText.Text,bp.mIsRegEx);
                 bp.mWrapIsAtRight = BulletEdgeCombo.Text == "Right";
-                try
-                {
-                    mpset.validateBullet(index);
+
+                try {
+                    _params.validateBullet(index);
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     if (printError)
-                    {
-                        MessageBox.Show("Error detected validating bullet - " + e.Message);
-                    }
+                        MessageBox.Show("Bullet validation error:\n" + e.Message, "Comment Reflower Error");
                     return false;
                 }
             }
+
             return true;
         }
 
-        private bool mFirstBreakFlowStringListError = true;
-        private int mCurrentBreakFlowStringListItemSelected = -1;
-        private int mIndexToSelectOnBreakFlowStringListMouseUp = -1;
-        private bool mProgramaticallySettingSelectedBreakFlowString = false;
+        private bool _firstBreakFlowStringListError = true;
+        private int _currentBreakFlowStringListItemSelected = -1;
+        private int _indexToSelectOnBreakFlowStringListMouseUp = -1;
+        private bool _programaticallySettingSelectedBreakFlowString = false;
 
-        private void updateItemsForBreakFlowString(int index)
-        {
+        private void updateItemsForBreakFlowString(int index) {
             BreakFlowStringNewButton.Enabled = true;
-            if (index == -1)
-            {
+
+            if (index == -1) {
                 BreakFlowStringDeleteButton.Enabled = false;
                 BreakFlowStringDownButton.Enabled = false;
                 BreakFlowStringUpButton.Enabled = false;
@@ -456,13 +388,12 @@ namespace CommentReflower
                 BreakFlowStringFlowNextCheck.Checked = false;
                 BreakFlowStringFlowNextCheck.Enabled = false;
             }
-            else
-            {
+            else {
                 BreakFlowStringDeleteButton.Enabled = true;
                 BreakFlowStringUpButton.Enabled = (index > 0);
                 BreakFlowStringDownButton.Enabled = (index < (BulletList.Items.Count-1));
 
-                BreakFlowString lb = (BreakFlowString)mpset.mBreakFlowStrings[index];
+                BreakFlowString lb = (BreakFlowString)_params.mBreakFlowStrings[index];
                 BreakFlowStringStringText.Enabled = true;
                 BreakFlowStringStringText.Text = convertToDisplay(lb.mString,lb.mIsRegEx);
                 BreakFlowStringIsRegExCheck.Enabled = true;
@@ -470,55 +401,46 @@ namespace CommentReflower
 
                 BreakFlowStringFlowPreviousCheck.Checked = lb.mNeverReflowLine;
                 BreakFlowStringFlowPreviousCheck.Enabled = true;
-                if (BreakFlowStringFlowPreviousCheck.Checked)
-                {
+                if (BreakFlowStringFlowPreviousCheck.Checked) {
                     BreakFlowStringFlowNextCheck.Enabled = false;
                     BreakFlowStringFlowNextCheck.Checked = false;
-                }
-                else
-                {
+                } else {
                     BreakFlowStringFlowNextCheck.Checked = lb.mNeverReflowIntoNextLine;
                     BreakFlowStringFlowNextCheck.Enabled = true;
                 }
             }
         }
     
-        
-        private void selectBreakFlowStringListItem(int index)
-        {
-            mCurrentBreakFlowStringListItemSelected = index;
-            if (index != -1)
-            {
-                mProgramaticallySettingSelectedBreakFlowString = true;
+        private void selectBreakFlowStringListItem(int index) {
+            _currentBreakFlowStringListItemSelected = index;
+            if (index != -1) {
+                _programaticallySettingSelectedBreakFlowString = true;
                 BreakFlowStringList.Items[index].Selected = true;
-                mProgramaticallySettingSelectedBreakFlowString = false;
+                _programaticallySettingSelectedBreakFlowString = false;
             }
         }
 
-        private bool validateSelectedBreakFlowString(bool printError)
-        {
-            int index = mCurrentBreakFlowStringListItemSelected;
-            if (index != -1)
-            {
-                BreakFlowString bp = (BreakFlowString)mpset.mBreakFlowStrings[index];
+        private bool validateSelectedBreakFlowString(bool printError) {
+            int index = _currentBreakFlowStringListItemSelected;
+
+            if (index != -1) {
+                BreakFlowString bp = (BreakFlowString)_params.mBreakFlowStrings[index];
                 bp.mName = BreakFlowStringList.Items[index].Text;
                 bp.mIsRegEx = BreakFlowStringIsRegExCheck.Checked;
                 bp.mString = convertFromDisplay(BreakFlowStringStringText.Text,bp.mIsRegEx);
                 bp.mNeverReflowLine = BreakFlowStringFlowPreviousCheck.Checked;
                 bp.mNeverReflowIntoNextLine = BreakFlowStringFlowNextCheck.Checked;
-                try
-                {
-                    mpset.validateBreakFlowString(index);
+
+                try {
+                    _params.validateBreakFlowString(index);
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     if (printError)
-                    {
-                        MessageBox.Show("Error detected validating BreakFlowString - " + e.Message);
-                    }
+                        MessageBox.Show("BreakFlowString validation error:\n" + e.Message, "Comment Reflower Error");
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -529,7 +451,7 @@ namespace CommentReflower
         /// </summary>
         private void InitializeComponent()
         {
-            System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(CommentReflowerSetup));
+            System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Settings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.GeneralTab = new System.Windows.Forms.TabPage();
             this.AboutBtn = new System.Windows.Forms.Button();
@@ -1235,33 +1157,27 @@ namespace CommentReflower
         }
         #endregion
 
-        private void BulletDeleteButton_Click(object sender, System.EventArgs e)
-        {
+        private void BulletDeleteButton_Click(object sender, EventArgs args) {
             int index = BulletList.SelectedItems[0].Index;
 
             BulletList.Items[index].Remove();
-            mpset.mBulletPoints.RemoveAt(index);
-
+            _params.mBulletPoints.RemoveAt(index);
             if (index >= BulletList.Items.Count)
-            {
                 index = index - 1;
-            }
+
             selectBulletListItem(index);
             if (index != -1)
-            {
                 BulletList.Items[index].EnsureVisible();
-            }
-            updateItemsForBullet(index);//this will be -1 if last item is deleted
+
+            updateItemsForBullet(index); //this will be -1 if last item is deleted
         }
 
-        private void BulletNewButton_Click(object sender, System.EventArgs e)
-        {
+        private void BulletNewButton_Click(object sender, EventArgs args) {
             if (!validateSelectedBullet(true))
-            {
                 return;
-            }
+
             BulletPoint newObj = new BulletPoint("New Bullet Point", ".*",true, true);
-            mpset.mBulletPoints.Add(newObj);
+            _params.mBulletPoints.Add(newObj);
             BulletList.Items.Add(new ListViewItem(newObj.mName));
             int index = BulletList.Items.Count-1;
             selectBulletListItem(index);
@@ -1269,105 +1185,92 @@ namespace CommentReflower
             BulletList.Items[index].BeginEdit();
             updateItemsForBullet(index);
         }
-        private void BulletDownButton_Click(object sender, System.EventArgs e)
-        {
+
+        private void BulletDownButton_Click(object sender, EventArgs args) {
             int index = BulletList.SelectedItems[0].Index;
 
-            string temp = BulletList.Items[index].Text;
+            string s = BulletList.Items[index].Text;
             BulletList.Items[index].Text = BulletList.Items[index+1].Text;
-            BulletList.Items[index+1].Text = temp;
+            BulletList.Items[index+1].Text = s;
 
-            object tempo = mpset.mBulletPoints[index];
-            mpset.mBulletPoints[index] = mpset.mBulletPoints[index+1];
-            mpset.mBulletPoints[index+1] = tempo;
+            object o = _params.mBulletPoints[index];
+            _params.mBulletPoints[index] = _params.mBulletPoints[index+1];
+            _params.mBulletPoints[index+1] = o;
 
             selectBulletListItem(index+1);
             BulletList.Items[index+1].EnsureVisible();
             updateItemsForBullet(index+1);
         }
 
-        private void BulletUpButton_Click(object sender, System.EventArgs e)
-        {
+        private void BulletUpButton_Click(object sender, EventArgs args) {
             int index = BulletList.SelectedItems[0].Index;
 
-            string temp = BulletList.Items[index].Text;
+            string s = BulletList.Items[index].Text;
             BulletList.Items[index].Text = BulletList.Items[index-1].Text;
-            BulletList.Items[index-1].Text = temp;
+            BulletList.Items[index-1].Text = s;
 
-            object tempo = mpset.mBulletPoints[index];
-            mpset.mBulletPoints[index] = mpset.mBulletPoints[index-1];
-            mpset.mBulletPoints[index-1] = tempo;
+            object o = _params.mBulletPoints[index];
+            _params.mBulletPoints[index] = _params.mBulletPoints[index-1];
+            _params.mBulletPoints[index-1] = o;
 
             selectBulletListItem(index-1);
             BulletList.Items[index-1].EnsureVisible();
             updateItemsForBullet(index-1);
         }
 
-        private void BulletList_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (!mProgramaticallySettingSelectedBullet)
-            {
+        private void BulletList_SelectedIndexChanged(object sender, EventArgs args) {
+            if (!_programaticallySettingSelectedBullet) {
                 // user selected new bullet
-                if (BulletList.SelectedItems.Count > 0)
-                {
+                if (BulletList.SelectedItems.Count > 0) {
                     int index = BulletList.SelectedItems[0].Index;
-                    if (!validateSelectedBullet(mFirstBulletListError))
-                    {
-                        selectBulletListItem(mCurrentBulletListItemSelected);
-                        mIndexToSelectOnBulletListMouseUp = mCurrentBulletListItemSelected;
-                        mFirstBulletListError = !mFirstBulletListError;
-                    }
-                    else
-                    {
-                        mCurrentBulletListItemSelected = index;
+
+                    if (!validateSelectedBullet(_firstBulletListError)) {
+                        selectBulletListItem(_currentBulletListItemSelected);
+                        _indexToSelectOnBulletListMouseUp = _currentBulletListItemSelected;
+                        _firstBulletListError = !_firstBulletListError;
+                    } else {
+                        _currentBulletListItemSelected = index;
                         updateItemsForBullet(index);
                     }
                 }
             }
         }
 
-        private void BulletList_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (mIndexToSelectOnBulletListMouseUp != -1)
-            {
-                selectBulletListItem(mIndexToSelectOnBulletListMouseUp);
-                mIndexToSelectOnBulletListMouseUp = -1;
+        private void BulletList_MouseUp(object sender, MouseEventArgs args) {
+            if (_indexToSelectOnBulletListMouseUp != -1) {
+                selectBulletListItem(_indexToSelectOnBulletListMouseUp);
+                _indexToSelectOnBulletListMouseUp = -1;
             }
         }
 
-        private void BulletsTab_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = !validateSelectedBullet(true);
+        private void BulletsTab_Validating(object sender, CancelEventArgs args) {
+            args.Cancel = !validateSelectedBullet(true);
         }
 
-        private void BreakFlowStringDeleteButton_Click(object sender, System.EventArgs e)
-        {
+        private void BreakFlowStringDeleteButton_Click(object sender, EventArgs args) {
             int index = BreakFlowStringList.SelectedItems[0].Index;
 
             BreakFlowStringList.Items[index].Remove();
-            mpset.mBreakFlowStrings.RemoveAt(index);
-
+            _params.mBreakFlowStrings.RemoveAt(index);
             if (index >= BreakFlowStringList.Items.Count)
-            {
                 index = index - 1;
-            }
+
             selectBreakFlowStringListItem(index);
             if (index != -1)
-            {
                 BreakFlowStringList.Items[index].EnsureVisible();
-            }
-            updateItemsForBreakFlowString(index);//this will be -1 if last item is deleted
+
+            updateItemsForBreakFlowString(index); //this will be -1 if last item is deleted
         }
 
-        private void BreakFlowStringNewButton_Click(object sender, System.EventArgs e)
-        {
+        private void BreakFlowStringNewButton_Click(object sender, EventArgs args) {
             if (!validateSelectedBreakFlowString(true))
-            {
                 return;
-            }
-            BreakFlowString newObj = new BreakFlowString("New break flow string", "string to break flow",false,true,true);
-            mpset.mBreakFlowStrings.Add(newObj);
-            BreakFlowStringList.Items.Add(new ListViewItem(newObj.mName));
+
+            BreakFlowString bfs = new BreakFlowString(
+                "New break flow string", "string to break flow", false, true, true);
+
+            _params.mBreakFlowStrings.Add(bfs);
+            BreakFlowStringList.Items.Add(new ListViewItem(bfs.mName));
             int index = BreakFlowStringList.Items.Count-1;
             selectBreakFlowStringListItem(index);
             BreakFlowStringList.Items[index].EnsureVisible();
@@ -1375,91 +1278,76 @@ namespace CommentReflower
             updateItemsForBreakFlowString(index);
         }
 
-        private void BreakFlowStringDownButton_Click(object sender, System.EventArgs e)
-        {
+        private void BreakFlowStringDownButton_Click(object sender, EventArgs args) {
             int index = BreakFlowStringList.SelectedItems[0].Index;
 
-            string temp = BreakFlowStringList.Items[index].Text;
+            string s = BreakFlowStringList.Items[index].Text;
             BreakFlowStringList.Items[index].Text = BreakFlowStringList.Items[index+1].Text;
-            BreakFlowStringList.Items[index+1].Text = temp;
+            BreakFlowStringList.Items[index+1].Text = s;
 
-            object tempo = mpset.mBreakFlowStrings[index];
-            mpset.mBreakFlowStrings[index] = mpset.mBreakFlowStrings[index+1];
-            mpset.mBreakFlowStrings[index+1] = tempo;
+            object o = _params.mBreakFlowStrings[index];
+            _params.mBreakFlowStrings[index] = _params.mBreakFlowStrings[index+1];
+            _params.mBreakFlowStrings[index+1] = o;
 
             selectBreakFlowStringListItem(index+1);
             BreakFlowStringList.Items[index+1].EnsureVisible();
             updateItemsForBreakFlowString(index+1);
         }
 
-        private void BreakFlowStringUpButton_Click(object sender, System.EventArgs e)
-        {
+        private void BreakFlowStringUpButton_Click(object sender, EventArgs args) {
             int index = BreakFlowStringList.SelectedItems[0].Index;
 
-            string temp = BreakFlowStringList.Items[index].Text;
+            string s = BreakFlowStringList.Items[index].Text;
             BreakFlowStringList.Items[index].Text = BreakFlowStringList.Items[index-1].Text;
-            BreakFlowStringList.Items[index-1].Text = temp;
+            BreakFlowStringList.Items[index-1].Text = s;
 
-            object tempo = mpset.mBreakFlowStrings[index];
-            mpset.mBreakFlowStrings[index] = mpset.mBreakFlowStrings[index-1];
-            mpset.mBreakFlowStrings[index-1] = tempo;
+            object o = _params.mBreakFlowStrings[index];
+            _params.mBreakFlowStrings[index] = _params.mBreakFlowStrings[index-1];
+            _params.mBreakFlowStrings[index-1] = o;
 
             selectBreakFlowStringListItem(index-1);
             BreakFlowStringList.Items[index-1].EnsureVisible();
             updateItemsForBreakFlowString(index-1);
         }
 
-        private void BreakFlowStringList_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (!mProgramaticallySettingSelectedBreakFlowString)
-            {
+        private void BreakFlowStringList_SelectedIndexChanged(object sender, EventArgs args) {
+            if (!_programaticallySettingSelectedBreakFlowString) {
                 // user selected new BreakFlowString
-                if (BreakFlowStringList.SelectedItems.Count > 0)
-                {
+                if (BreakFlowStringList.SelectedItems.Count > 0) {
                     int index = BreakFlowStringList.SelectedItems[0].Index;
-                    if (!validateSelectedBreakFlowString(mFirstBreakFlowStringListError))
-                    {
-                        selectBreakFlowStringListItem(mCurrentBreakFlowStringListItemSelected);
-                        mIndexToSelectOnBreakFlowStringListMouseUp = mCurrentBreakFlowStringListItemSelected;
-                        mFirstBreakFlowStringListError = !mFirstBreakFlowStringListError;
-                    }
-                    else
-                    {
-                        mCurrentBreakFlowStringListItemSelected = index;
+
+                    if (!validateSelectedBreakFlowString(_firstBreakFlowStringListError)) {
+                        selectBreakFlowStringListItem(_currentBreakFlowStringListItemSelected);
+                        _indexToSelectOnBreakFlowStringListMouseUp = _currentBreakFlowStringListItemSelected;
+                        _firstBreakFlowStringListError = !_firstBreakFlowStringListError;
+                    } else {
+                        _currentBreakFlowStringListItemSelected = index;
                         updateItemsForBreakFlowString(index);
                     }
                 }
             }
         }
 
-        private void BreakFlowStringList_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (mIndexToSelectOnBreakFlowStringListMouseUp != -1)
-            {
-                selectBreakFlowStringListItem(mIndexToSelectOnBreakFlowStringListMouseUp);
-                mIndexToSelectOnBreakFlowStringListMouseUp = -1;
+        private void BreakFlowStringList_MouseUp(object sender, MouseEventArgs args) {
+            if (_indexToSelectOnBreakFlowStringListMouseUp != -1) {
+                selectBreakFlowStringListItem(_indexToSelectOnBreakFlowStringListMouseUp);
+                _indexToSelectOnBreakFlowStringListMouseUp = -1;
             }
         }
 
-        private void BreakFlowStringsTab_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = !validateSelectedBreakFlowString(true);
+        private void BreakFlowStringsTab_Validating(object sender, CancelEventArgs args) {
+            args.Cancel = !validateSelectedBreakFlowString(true);
         }
 
-
-        private void BreakFlowStringFlowPreviousCheck_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (BreakFlowStringList.SelectedItems.Count > 0)
-            {
+        private void BreakFlowStringFlowPreviousCheck_CheckedChanged(object sender, EventArgs args) {
+            if (BreakFlowStringList.SelectedItems.Count > 0) {
                 int index = BreakFlowStringList.SelectedItems[0].Index;
-                BreakFlowString lb = (BreakFlowString)mpset.mBreakFlowStrings[index];
-                if (BreakFlowStringFlowPreviousCheck.Checked)
-                {
+                BreakFlowString lb = (BreakFlowString)_params.mBreakFlowStrings[index];
+
+                if (BreakFlowStringFlowPreviousCheck.Checked) {
                     BreakFlowStringFlowNextCheck.Enabled = false;
                     BreakFlowStringFlowNextCheck.Checked = false;
-                }
-                else
-                {
+                } else {
                     BreakFlowStringFlowNextCheck.Checked = lb.mNeverReflowIntoNextLine;
                     BreakFlowStringFlowNextCheck.Enabled = true;
                 }
@@ -1467,131 +1355,108 @@ namespace CommentReflower
         }
 
 
-        private void BlockDeleteButton_Click(object sender, System.EventArgs e)
-        {
+        private void BlockDeleteButton_Click(object sender, EventArgs args) {
             int index = BlockList.SelectedItems[0].Index;
 
             BlockList.Items[index].Remove();
-            mpset.mCommentBlocks.RemoveAt(index);
-
+            _params.mCommentBlocks.RemoveAt(index);
             if (index >= BlockList.Items.Count)
-            {
                 index = index - 1;
-            }
+
             selectBlockListItem(index);
             if (index != -1)
-            {
                 BlockList.Items[index].EnsureVisible();
-            }
-            updateItemsForBlock(index);//this will be -1 if last item is deleted
+
+            updateItemsForBlock(index); //this will be -1 if last item is deleted
         }
 
-        private void BlockNewButton_Click(object sender, System.EventArgs e)
-        {
+        private void BlockNewButton_Click(object sender, EventArgs args) {
             if (!validateSelectedBlock(true))
-            {
                 return;
-            }
-            ArrayList cPlusPlusCba = new ArrayList();
-            cPlusPlusCba.Add("*.new");
-            CommentBlock newObj = new CommentBlock("New comment block",
-                                                   (ArrayList)cPlusPlusCba.Clone(),
-                                                   StartEndBlockType.Empty,
-                                                   "",
-                                                   false,
-                                                   StartEndBlockType.Empty,
-                                                   "",
-                                                   false,
-                                                   "#",
-                                                   false);
-            mpset.mCommentBlocks.Add(newObj);
-            BlockList.Items.Add(new ListViewItem(newObj.mName));
+
+            ArrayList list = new ArrayList();
+            list.Add("*.new");
+            CommentBlock cb = new CommentBlock(
+                "New comment block", (ArrayList) list.Clone(),
+                StartEndBlockType.Empty, "", false,
+                StartEndBlockType.Empty, "", false, "#", false);
+
+            _params.mCommentBlocks.Add(cb);
+            BlockList.Items.Add(new ListViewItem(cb.mName));
             int index = BlockList.Items.Count-1;
             selectBlockListItem(index);
+
             BlockList.Items[index].EnsureVisible();
             BlockList.Items[index].BeginEdit();
             updateItemsForBlock(index);
         }
-        private void BlockDownButton_Click(object sender, System.EventArgs e)
-        {
+
+        private void BlockDownButton_Click(object sender, EventArgs args) {
             int index = BlockList.SelectedItems[0].Index;
 
-            string temp = BlockList.Items[index].Text;
+            string s = BlockList.Items[index].Text;
             BlockList.Items[index].Text = BlockList.Items[index+1].Text;
-            BlockList.Items[index+1].Text = temp;
+            BlockList.Items[index+1].Text = s;
 
-            object tempo = mpset.mCommentBlocks[index];
-            mpset.mCommentBlocks[index] = mpset.mCommentBlocks[index+1];
-            mpset.mCommentBlocks[index+1] = tempo;
+            object o = _params.mCommentBlocks[index];
+            _params.mCommentBlocks[index] = _params.mCommentBlocks[index+1];
+            _params.mCommentBlocks[index+1] = o;
 
             selectBlockListItem(index+1);
             BlockList.Items[index+1].EnsureVisible();
             updateItemsForBlock(index+1);
         }
 
-        private void BlockUpButton_Click(object sender, System.EventArgs e)
-        {
+        private void BlockUpButton_Click(object sender, EventArgs args) {
             int index = BlockList.SelectedItems[0].Index;
 
-            string temp = BlockList.Items[index].Text;
+            string s = BlockList.Items[index].Text;
             BlockList.Items[index].Text = BlockList.Items[index-1].Text;
-            BlockList.Items[index-1].Text = temp;
+            BlockList.Items[index-1].Text = s;
 
-            object tempo = mpset.mCommentBlocks[index];
-            mpset.mCommentBlocks[index] = mpset.mCommentBlocks[index-1];
-            mpset.mCommentBlocks[index-1] = tempo;
+            object o = _params.mCommentBlocks[index];
+            _params.mCommentBlocks[index] = _params.mCommentBlocks[index-1];
+            _params.mCommentBlocks[index-1] = o;
 
             selectBlockListItem(index-1);
             BlockList.Items[index-1].EnsureVisible();
             updateItemsForBlock(index-1);
         }
 
-        private void BlockList_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (!mProgramaticallySettingSelectedBlock)
-            {
+        private void BlockList_SelectedIndexChanged(object sender, EventArgs args) {
+            if (!_programaticallySettingSelectedBlock) {
                 //user selected new Block
-                if (BlockList.SelectedItems.Count > 0)
-                {
+                if (BlockList.SelectedItems.Count > 0) {
                     int index = BlockList.SelectedItems[0].Index;
-                    if (!validateSelectedBlock(mFirstBlockListError))
-                    {
-                        selectBlockListItem(mCurrentBlockListItemSelected);
-                        mIndexToSelectOnBlockListMouseUp = mCurrentBlockListItemSelected;
-                        mFirstBlockListError = !mFirstBlockListError;
-                    }
-                    else
-                    {
-                        mCurrentBlockListItemSelected = index;
+
+                    if (!validateSelectedBlock(_firstBlockListError)) {
+                        selectBlockListItem(_currentBlockListItemSelected);
+                        _indexToSelectOnBlockListMouseUp = _currentBlockListItemSelected;
+                        _firstBlockListError = !_firstBlockListError;
+                    } else {
+                        _currentBlockListItemSelected = index;
                         updateItemsForBlock(index);
                     }
                 }
             }
         }
 
-        private void BlockList_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (mIndexToSelectOnBlockListMouseUp != -1)
-            {
-                selectBlockListItem(mIndexToSelectOnBlockListMouseUp);
-                mIndexToSelectOnBlockListMouseUp = -1;
+        private void BlockList_MouseUp(object sender, MouseEventArgs args) {
+            if (_indexToSelectOnBlockListMouseUp != -1) {
+                selectBlockListItem(_indexToSelectOnBlockListMouseUp);
+                _indexToSelectOnBlockListMouseUp = -1;
             }
         }
 
-        private void BlocksTab_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = !validateSelectedBlock(true);
+        private void BlocksTab_Validating(object sender, CancelEventArgs args) {
+            args.Cancel = !validateSelectedBlock(true);
         }
 
-        private void BlockStartTypeCombo_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (BlockStartTypeCombo.SelectedIndex != 0)
-            {
+        private void BlockStartTypeCombo_SelectedIndexChanged(object sender, EventArgs args) {
+            if (BlockStartTypeCombo.SelectedIndex != 0) {
                 BlockStartText.Enabled = true;
                 IsBlockStartRegExCheck.Enabled = true;
-            }
-            else
-            {
+            } else {
                 BlockStartText.Enabled = false;
                 BlockStartText.Text = "";
                 IsBlockStartRegExCheck.Enabled = false;
@@ -1599,15 +1464,11 @@ namespace CommentReflower
             }
         }
 
-        private void BlockEndTypeCombo_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (BlockEndTypeCombo.SelectedIndex != 0)
-            {
+        private void BlockEndTypeCombo_SelectedIndexChanged(object sender, EventArgs args) {
+            if (BlockEndTypeCombo.SelectedIndex != 0) {
                 BlockEndText.Enabled = true;
                 IsBlockEndRegExCheck.Enabled = true;
-            }
-            else
-            {
+            } else {
                 BlockEndText.Enabled = false;
                 BlockEndText.Text = "";
                 IsBlockEndRegExCheck.Enabled = false;
@@ -1615,127 +1476,86 @@ namespace CommentReflower
             }
         }
 
-        private void GeneralTab_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            mpset.mUseTabsToIndent = UseTabsToIndentCheck.Checked;
-            try
-            {
-                mpset.mWrapWidth = System.Convert.ToInt32(BlockWrapWidthText.Text,10);
-                mpset.mMinimumBlockWidth = System.Convert.ToInt32(BlockMinimumWidthText.Text,10);
+        private void GeneralTab_Validating(object sender, CancelEventArgs args) {
+            _params.mUseTabsToIndent = UseTabsToIndentCheck.Checked;
+            try {
+                _params.mWrapWidth = Convert.ToInt32(BlockWrapWidthText.Text,10);
+                _params.mMinimumBlockWidth = Convert.ToInt32(BlockMinimumWidthText.Text,10);
             }
-            catch (Exception)
-            {
-                throw new System.ArgumentException("Wrap width and minumum block width must be integers.");
+            catch (Exception e) {
+                throw new ArgumentException("Wrap width and minumum block width must be integers.", e);
             }
-            mpset.validateGeneralSettings();
+            _params.validateGeneralSettings();
         }
 
-        private void AboutBtn_Click(object sender, System.EventArgs e)
-        {
-#if ISVS2003
-            MessageBox.Show(this, "Comment Reflower for Visual Studio 2003 1.4\nCopyright (C) 2006 Ian Nowland");
-#else
-            MessageBox.Show(this, "Comment Reflower for Visual Studio 2005 1.4\nCopyright (C) 2006 Ian Nowland");
-#endif
+        private void AboutBtn_Click(object sender, EventArgs args) {
+            MessageBox.Show(this, "Comment Reflower for Visual Studio 2005 1.4\n" +
+                "Copyright (C) 2006 Ian Nowland\nPorted to VS2008 by Christoph Nahr");
         }
 
-        private void CommentReflowerSetup_HelpRequested(object sender, System.Windows.Forms.HelpEventArgs hlpevent)
-        {
+        private const string _helpFile = "CommentReflowerHelp.chm";
+
+        private void CommentReflowerSetup_HelpRequested(object sender, HelpEventArgs hlpevent) {
             string keyword;
-            if (tabControl1.SelectedIndex == 0)
-            {
-                keyword = "GeneralSettings.htm";
-            }
-            else if (tabControl1.SelectedIndex == 1)
-            {
-                keyword = "CommentBlockSettings.htm";
-            }
-            else if (tabControl1.SelectedIndex == 2)
-            {
-                keyword = "BulletPointSettings.htm";
-            }
-            else //if (tabControl1.SelectedIndex == 3)
-            {
-                keyword = "BreakFlowStringsSettings.htm";
+            switch (tabControl1.SelectedIndex) {
+                case 0: keyword = "GeneralSettings.htm"; break;
+                case 1: keyword = "CommentBlockSettings.htm"; break;
+                case 2: keyword = "BulletPointSettings.htm"; break;
+                case 3: keyword = "BreakFlowStringsSettings.htm"; break;
+                default: return;
             }
 
-            RegistryKey regkey = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\VisualStudio\7.1\AddIns\CommentReflower.Connect");
-            string st1 = (string)regkey.GetValue("SatelliteDllPath");
-            Help.ShowHelp(this, st1 + mHelpFile,keyword);
+            string helpPath = Path.Combine(Connect.GetAddinFolder(), _helpFile);
+            Help.ShowHelp(this, helpPath, keyword);
             hlpevent.Handled = true;
         }
 
-        private void HelpBtn_Click(object sender, System.EventArgs e)
-        {
-            RegistryKey regkey = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\VisualStudio\7.1\AddIns\CommentReflower.Connect");
-            string st1 = (string)regkey.GetValue("SatelliteDllPath");
-            HelpNavigator navigator = HelpNavigator.TableOfContents;
-            Help.ShowHelp(this, st1 + mHelpFile, navigator);
+        private void HelpBtn_Click(object sender, EventArgs args) {
+            string helpPath = Path.Combine(Connect.GetAddinFolder(), _helpFile);
+            Help.ShowHelp(this, helpPath, HelpNavigator.TableOfContents);
         }
 
-
-        private string convertToDisplay(string str, bool isRegEx)
-        {
+        private string convertToDisplay(string str, bool isRegEx) {
             return str.Replace("\t","\\t");
         }
 
-        private string convertFromDisplay(string str, bool isRegEx)
-        {
+        private string convertFromDisplay(string str, bool isRegEx) {
             return str.Replace("\\t","\t");
         }
 
-        private const string mHelpFile = @"CommentReflowerHelp.chm";
-
-        private void CommentReflowerSetup_Load(object sender, System.EventArgs e)
-        {
-            // set max and min size here (after display) to allow control to be
-            // used on different DPI displays
+        private void CommentReflowerSetup_Load(object sender, EventArgs args) {
+            // set max and min size here (after display) to allow
+            // the control to be used on different DPI displays
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
         }
 
-        private void AlignBtn_Click(object sender, System.EventArgs e)
-        {
-#if ISVS2003
-            Commands commands = mApplicationObject.Commands;
-            _CommandBars commandBars = mApplicationObject.CommandBars;
-#else
-            Commands2 commands = (Commands2)mApplicationObject.Commands;
-            _CommandBars commandBars = (_CommandBars)mApplicationObject.CommandBars;
-#endif
-            Command parameterAlignerCommand = null;
-            for (int i=0; i < 2; i++)
-            {
-                try
-                {
-                    object []contextGUIDS = new object[] { };
-                    parameterAlignerCommand = commands.AddNamedCommand(mAddInInstance, 
-                                                                       "ParameterAligner", 
-                                                                       "Align Parameters", 
-                                                                       "Aligns the parameters of the selected function call", 
-                                                                       false, 
-                                                                       105, 
-                                                                       ref contextGUIDS, 
-                                                                       (int)vsCommandStatus.vsCommandStatusSupported+(int)vsCommandStatus.vsCommandStatusEnabled);
-                    break;
-                }
-                catch (Exception)
-                {
-                    if (i==0)
-                    {
-                        commands.Item("CommentReflower.Connect.ParameterAligner",-1).Delete();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
-            parameterAlignerCommand.AddControl(commandBars["Tools"],1);
-            parameterAlignerCommand.AddControl(commandBars["Code Window"],1);
-        }
+        private void AlignBtn_Click(object sender, EventArgs args) {
 
-        private _DTE mApplicationObject;
-        private AddIn mAddInInstance;
+            // find editor context menu and "Tools" menu
+            CommandBar codeWindowBar; CommandBarPopup toolsPopup;
+            Connect.FindMenus(_applicationObject, out codeWindowBar, out toolsPopup);
+
+            // common parameters for command objects
+            const int commandStatusValue =
+                (int) vsCommandStatus.vsCommandStatusSupported +
+                (int) vsCommandStatus.vsCommandStatusEnabled;
+
+            const int commandStyleFlags = (int) vsCommandStyle.vsCommandStyleText;
+            const vsCommandControlType controlType = vsCommandControlType.vsCommandControlTypeButton;
+
+            object[] contextGUIDS = new object[] { };
+            Commands2 commands = (Commands2) _applicationObject.Commands;
+            try {
+                Command alignParametersCommand = commands.AddNamedCommand2(_addInInstance,
+                    "AlignParameters", "Align Parameters at Cursor",
+                    "Aligns the function parameters at the cursor", true, 59,
+                    ref contextGUIDS, commandStatusValue, commandStyleFlags, controlType);
+
+                alignParametersCommand.AddControl(toolsPopup.CommandBar, 1);
+                alignParametersCommand.AddControl(codeWindowBar, 1);
+            }
+            catch { }
+        }
     }
 }
